@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tentang Desa Karanggayam</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: #ffffff;
             min-height: 100vh;
         }
-        
+
         /* Navbar */
         .navbar {
             background: #ffffff;
@@ -28,7 +29,7 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -37,18 +38,18 @@
             align-items: center;
             padding: 0 20px;
         }
-        
+
         .logo {
             font-size: clamp(18px, 4vw, 24px);
             font-weight: 700;
             color: #333;
             white-space: nowrap;
         }
-        
+
         .logo span {
             color: #f5576c;
         }
-        
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -56,7 +57,7 @@
             flex-wrap: wrap;
             justify-content: flex-end;
         }
-        
+
         .nav-link {
             text-decoration: none;
             color: #666;
@@ -67,11 +68,12 @@
             font-size: clamp(12px, 2vw, 16px);
             white-space: nowrap;
         }
-        
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover,
+        .nav-link.active {
             color: #f5576c;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -82,18 +84,19 @@
             background: #f5576c;
             transition: width 0.3s ease;
         }
-        
-        .nav-link:hover::after, .nav-link.active::after {
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
         }
-        
+
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
         }
-        
+
         .menu-toggle span {
             width: 25px;
             height: 3px;
@@ -101,41 +104,41 @@
             border-radius: 3px;
             transition: all 0.3s ease;
         }
-        
+
         /* Hero Header */
         .page-header {
             background: linear-gradient(135deg, rgba(245, 87, 108, 0.1) 0%, rgba(245, 87, 108, 0.05) 100%);
             padding: clamp(40px, 8vw, 80px) 20px;
             text-align: center;
         }
-        
+
         .page-title {
             font-size: clamp(28px, 6vw, 48px);
             font-weight: 700;
             color: #333;
             margin-bottom: 15px;
         }
-        
+
         .page-subtitle {
             font-size: clamp(14px, 2.5vw, 20px);
             color: #666;
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         /* Main Content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: clamp(30px, 5vw, 60px) 20px;
         }
-        
+
         /* Content Grid */
         .content-grid {
             display: grid;
             gap: clamp(20px, 3vw, 30px);
         }
-        
+
         .content-card {
             background: #ffffff;
             padding: clamp(25px, 4vw, 40px);
@@ -144,40 +147,40 @@
             transition: all 0.3s ease;
             border: 2px solid transparent;
         }
-        
+
         .content-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 40px rgba(245, 87, 108, 0.15);
             border-color: rgba(245, 87, 108, 0.2);
         }
-        
+
         .card-icon {
             font-size: clamp(36px, 6vw, 48px);
             margin-bottom: 15px;
         }
-        
+
         .card-title {
             color: #f5576c;
             font-size: clamp(20px, 3.5vw, 28px);
             font-weight: 700;
             margin-bottom: 20px;
         }
-        
+
         .card-content {
             color: #555;
             line-height: 1.8;
             font-size: clamp(14px, 2vw, 16px);
         }
-        
+
         .card-content p {
             margin-bottom: 15px;
         }
-        
+
         .info-list {
             list-style: none;
             margin-top: 20px;
         }
-        
+
         .info-list li {
             padding: 12px 0;
             border-bottom: 1px solid rgba(245, 87, 108, 0.1);
@@ -186,30 +189,30 @@
             gap: 15px;
             flex-wrap: wrap;
         }
-        
+
         .info-list li:last-child {
             border-bottom: none;
         }
-        
+
         .info-label {
             font-weight: 600;
             color: #f5576c;
             font-size: clamp(13px, 2vw, 15px);
         }
-        
+
         .info-value {
             color: #666;
             text-align: right;
             font-size: clamp(13px, 2vw, 15px);
         }
-        
+
         /* Two Column Layout */
         .two-column {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
             gap: clamp(20px, 3vw, 30px);
         }
-        
+
         /* Stats Section */
         .stats-grid {
             display: grid;
@@ -217,7 +220,7 @@
             gap: clamp(15px, 2.5vw, 20px);
             margin-top: 25px;
         }
-        
+
         .stat-box {
             background: linear-gradient(135deg, rgba(245, 87, 108, 0.1) 0%, rgba(245, 87, 108, 0.05) 100%);
             padding: clamp(20px, 3vw, 25px);
@@ -225,20 +228,20 @@
             text-align: center;
             border-left: 4px solid #f5576c;
         }
-        
+
         .stat-number {
             font-size: clamp(28px, 5vw, 36px);
             font-weight: 700;
             color: #f5576c;
             margin-bottom: 10px;
         }
-        
+
         .stat-label {
             color: #888;
             font-size: clamp(12px, 1.8vw, 14px);
             line-height: 1.4;
         }
-        
+
         /* Footer */
         .footer {
             background: #f8f9fa;
@@ -247,38 +250,38 @@
             margin-top: clamp(40px, 6vw, 80px);
             border-top: 1px solid #e9ecef;
         }
-        
+
         .footer p {
             color: #666;
             margin-bottom: 8px;
             font-size: clamp(13px, 2vw, 15px);
         }
-        
+
         .footer strong {
             color: #333;
         }
-        
+
         .footer .pink-text {
             color: #f5576c;
         }
-        
+
         /* Tablet Portrait & Landscape (768px - 1024px) */
         @media (max-width: 1024px) {
             .container {
                 padding: 40px 20px;
             }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             }
         }
-        
+
         /* Mobile & Small Tablet (max-width: 768px) */
         @media (max-width: 768px) {
             .navbar {
                 padding: 12px 0;
             }
-            
+
             .nav-menu {
                 position: absolute;
                 top: 100%;
@@ -291,121 +294,122 @@
                 display: none;
                 gap: 15px;
             }
-            
+
             .nav-menu.active {
                 display: flex;
             }
-            
+
             .menu-toggle {
                 display: flex;
             }
-            
+
             .menu-toggle.active span:nth-child(1) {
                 transform: rotate(45deg) translate(8px, 8px);
             }
-            
+
             .menu-toggle.active span:nth-child(2) {
                 opacity: 0;
             }
-            
+
             .menu-toggle.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -7px);
             }
-            
+
             .nav-link {
                 padding: 10px;
                 text-align: center;
             }
-            
+
             .page-header {
                 padding: 40px 20px;
             }
-            
+
             .container {
                 padding: 30px 15px;
             }
-            
+
             .content-card {
                 padding: 25px 20px;
             }
-            
+
             .two-column {
                 grid-template-columns: 1fr;
             }
-            
+
             .info-list li {
                 flex-direction: column;
                 gap: 5px;
             }
-            
+
             .info-value {
                 text-align: left;
             }
         }
-        
+
         /* Small Mobile (max-width: 480px) */
         @media (max-width: 480px) {
             .nav-container {
                 padding: 0 15px;
             }
-            
+
             .page-header {
                 padding: 30px 15px;
             }
-            
+
             .container {
                 padding: 25px 15px;
             }
-            
+
             .content-card {
                 padding: 20px 15px;
             }
-            
+
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .stat-box {
                 padding: 20px;
             }
         }
-        
+
         /* Landscape Orientation for Mobile */
         @media (max-height: 500px) and (orientation: landscape) {
             .page-header {
                 padding: 30px 20px;
             }
-            
+
             .container {
                 padding: 30px 20px;
             }
-            
+
             .footer {
                 margin-top: 40px;
                 padding: 30px 20px;
             }
-            
+
             .two-column {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
-        
+
         /* Large Desktop (min-width: 1440px) */
         @media (min-width: 1440px) {
             .page-header {
                 padding: 80px 20px;
             }
-            
+
             .container {
                 padding: 60px 20px;
             }
-            
+
             .footer {
                 margin-top: 80px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -439,8 +443,10 @@
                 <div class="card-icon">🏘️</div>
                 <h2 class="card-title">Profil Desa Karanggayam</h2>
                 <div class="card-content">
-                    <p>Desa Karanggayam merupakan salah satu desa yang terletak di Kecamatan Lumbir, Kabupaten Banyumas, Provinsi Jawa Tengah. Desa ini memiliki karakteristik wilayah yang khas dengan kombinasi area pemukiman, pertanian, dan perkebunan.</p>
-                    
+                    <p>Desa Karanggayam merupakan salah satu desa yang terletak di Kecamatan Lumbir, Kabupaten Banyumas,
+                        Provinsi Jawa Tengah. Desa ini memiliki karakteristik wilayah yang khas dengan kombinasi area
+                        pemukiman, pertanian, dan perkebunan.</p>
+
                     <ul class="info-list">
                         <li>
                             <span class="info-label">Provinsi</span>
@@ -468,8 +474,9 @@
                     <div class="card-icon">🗺️</div>
                     <h2 class="card-title">Wilayah Administrasi</h2>
                     <div class="card-content">
-                        <p>Desa Karanggayam terbagi dalam 6 RW (Rukun Warga) dan 27 RT (Rukun Tetangga) yang tersebar di seluruh wilayah desa.</p>
-                        
+                        <p>Desa Karanggayam terbagi dalam 6 RW (Rukun Warga) dan 27 RT (Rukun Tetangga) yang tersebar di
+                            seluruh wilayah desa.</p>
+
                         <div class="stats-grid">
                             <div class="stat-box">
                                 <div class="stat-number">6</div>
@@ -487,8 +494,9 @@
                     <div class="card-icon">🏢</div>
                     <h2 class="card-title">Fasilitas Umum</h2>
                     <div class="card-content">
-                        <p>Desa Karanggayam dilengkapi dengan berbagai fasilitas umum untuk mendukung kehidupan masyarakat.</p>
-                        
+                        <p>Desa Karanggayam dilengkapi dengan berbagai fasilitas umum untuk mendukung kehidupan
+                            masyarakat.</p>
+
                         <ul class="info-list">
                             <li>
                                 <span class="info-label">🏫 Pendidikan</span>
@@ -516,8 +524,9 @@
                 <div class="card-icon">🌾</div>
                 <h2 class="card-title">Potensi dan Perekonomian</h2>
                 <div class="card-content">
-                    <p>Desa Karanggayam memiliki potensi yang beragam, terutama di sektor pertanian dan perdagangan. Mayoritas lahan di desa ini digunakan untuk:</p>
-                    
+                    <p>Desa Karanggayam memiliki potensi yang beragam, terutama di sektor pertanian dan perdagangan.
+                        Mayoritas lahan di desa ini digunakan untuk:</p>
+
                     <ul class="info-list">
                         <li>
                             <span class="info-label">🌾 Pertanian</span>
@@ -544,10 +553,15 @@
                 <div class="card-icon">🏛️</div>
                 <h2 class="card-title">Kecamatan Lumbir</h2>
                 <div class="card-content">
-                    <p>Kecamatan Lumbir merupakan salah satu dari 27 kecamatan di Kabupaten Banyumas, Jawa Tengah. Kecamatan ini terletak di bagian selatan Kabupaten Banyumas dan memiliki posisi strategis dengan akses ke berbagai wilayah sekitarnya.</p>
-                    
-                    <p style="margin-top: 20px;">Lumbir memiliki karakteristik wilayah yang bervariasi, mulai dari dataran rendah hingga perbukitan, dengan mayoritas penduduk bermata pencaharian sebagai petani. Infrastruktur jalan yang menghubungkan desa-desa di Kecamatan Lumbir terus berkembang untuk mendukung mobilitas dan perekonomian masyarakat.</p>
-                    
+                    <p>Kecamatan Lumbir merupakan salah satu dari 27 kecamatan di Kabupaten Banyumas, Jawa Tengah.
+                        Kecamatan ini terletak di bagian selatan Kabupaten Banyumas dan memiliki posisi strategis dengan
+                        akses ke berbagai wilayah sekitarnya.</p>
+
+                    <p style="margin-top: 20px;">Lumbir memiliki karakteristik wilayah yang bervariasi, mulai dari
+                        dataran rendah hingga perbukitan, dengan mayoritas penduduk bermata pencaharian sebagai petani.
+                        Infrastruktur jalan yang menghubungkan desa-desa di Kecamatan Lumbir terus berkembang untuk
+                        mendukung mobilitas dan perekonomian masyarakat.</p>
+
                     <div class="stats-grid" style="margin-top: 25px;">
                         <div class="stat-box">
                             <div class="stat-number">13</div>
@@ -566,8 +580,9 @@
                 <div class="card-icon">🛣️</div>
                 <h2 class="card-title">Infrastruktur & Aksesibilitas</h2>
                 <div class="card-content">
-                    <p>Desa Karanggayam memiliki infrastruktur jalan yang baik dengan jaringan jalan desa dan jalan kecamatan yang menghubungkan berbagai area pemukiman dan fasilitas umum.</p>
-                    
+                    <p>Desa Karanggayam memiliki infrastruktur jalan yang baik dengan jaringan jalan desa dan jalan
+                        kecamatan yang menghubungkan berbagai area pemukiman dan fasilitas umum.</p>
+
                     <ul class="info-list">
                         <li>
                             <span class="info-label">Jalan Desa</span>
@@ -588,6 +603,41 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- Tentang Pengembang -->
+            <div class="content-card">
+                <div class="card-icon">👩‍💻</div>
+                <h2 class="card-title">Tentang Pengembang</h2>
+                <div class="card-content">
+                    <p><strong>Karanggayam Smart Map</strong> dikembangkan oleh <strong>Oca Meilika Wulandari</strong>,
+                        seorang mahasiswi dari Universitas Amikom Purwokerto dengan Nomor Induk Mahasiswa
+                        <strong>23SA21A141</strong>.</p>
+
+                    <p style="margin-top: 15px;">Sebagai salah satu warga Karanggayam (RT 02/RW 01), website ini
+                        merupakan kontribusi nyata Oca bagi desanya. Ia berharap inisiatif digital ini dapat memberikan
+                        manfaat maksimal dalam mempermudah akses informasi penting, lokasi strategis, serta potensi desa
+                        bagi seluruh masyarakat dan pengunjung Karanggayam.</p>
+
+                    <ul class="info-list" style="margin-top: 20px;">
+                        <li>
+                            <span class="info-label">Pengembang</span>
+                            <span class="info-value">Oca Meilika Wulandari</span>
+                        </li>
+                        <li>
+                            <span class="info-label">NIM</span>
+                            <span class="info-value">23SA21A141</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Universitas</span>
+                            <span class="info-value">Universitas Amikom Purwokerto</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Alamat</span>
+                            <span class="info-value">RT 02/RW 01, Karanggayam</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -595,19 +645,19 @@
     <footer class="footer">
         <p><strong>Sistem Informasi Geografis</strong></p>
         <p>Desa Karanggayam - Kecamatan Lumbir</p>
-        <p style="margin-top: 15px;">© 2024 <span class="pink-text">GIS Karanggayam</span> | All Rights Reserved</p>
+        <p style="margin-top: 15px;">© 2025 <span class="pink-text">GIS Karanggayam</span> | All Rights Reserved</p>
     </footer>
 
     <script>
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        
+
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-        
+
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
@@ -615,7 +665,7 @@
                 navMenu.classList.remove('active');
             });
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
@@ -647,4 +697,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -217,7 +217,7 @@ body {
 
 .ol-zoom {
     top: 80px !important;
-    left: 10px !important;
+    left: 45px !important;
     background: rgba(255, 255, 255, 0.95) !important;
     border-radius: 15px !important;
     padding: 5px !important;
@@ -596,7 +596,7 @@ body {
     
     .ol-zoom {
         top: 65px !important;
-        left: 8px !important;
+        left: 35px !important;
     }
 }
 
