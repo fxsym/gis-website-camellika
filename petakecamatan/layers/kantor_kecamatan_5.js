@@ -1,0 +1,1 @@
+var json_kantor_kecamatan_5 = {"type":"FeatureCollection","name":"kantor_kecamatan_5","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"2","nama":"Kantor Kecamatan Lumbir"},"geometry":{"type":"Point","coordinates":[108.958556800449685,-7.444886047312445]}}]}
