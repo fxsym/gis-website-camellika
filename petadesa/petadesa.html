@@ -9,11 +9,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="./resources/ol.css">
     <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/ol-search-layer.min.css">
     <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
     <link rel="stylesheet" href="./resources/qgis2web.css">
     <link rel="stylesheet" href="./styles/style.css">
-    <title>Peta Desa Karanggayam</title>
+
+    <title>Peta Desa</title>
 </head>
 
 <body>
@@ -71,6 +74,30 @@
 
         <!-- Layer Groups -->
         <div id="layerGroups">
+            <!-- Base Map -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('basemap')">
+                    <span class="layer-group-title">
+                        🗺️ Peta Dasar
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-basemap">▼</span>
+                </div>
+                <div class="layer-list" id="group-basemap">
+                    <div class="layer-item">
+                        <span class="layer-name">Satelit</span>
+                        <div class="toggle-switch" onclick="toggleLayer(0, this)" data-layer="0">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">OpenStreetMap</span>
+                        <div class="toggle-switch" onclick="toggleLayer(1, this)" data-layer="1">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Batas Administratif -->
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('admin')">
@@ -82,14 +109,14 @@
                 <div class="layer-list" id="group-admin">
                     <div class="layer-item">
                         <span class="layer-name">Batas Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(0, this)" data-layer="0">
+                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RW -->
+            <!-- RW (Rukun Warga) -->
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('rw')">
                     <span class="layer-group-title">
@@ -99,231 +126,45 @@
                 </div>
                 <div class="layer-list" id="group-rw">
                     <div class="layer-item">
-                        <span class="layer-name">RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RW 2</span>
-                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RW 3</span>
-                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RW 4</span>
+                        <span class="layer-name">RW 6</span>
                         <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">RW 5</span>
-                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
+                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">RW 6</span>
-                        <div class="toggle-switch" onclick="toggleLayer(1, this)" data-layer="1">
+                        <span class="layer-name">RW 4</span>
+                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RW 3</span>
+                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RW 2</span>
+                        <div class="toggle-switch" onclick="toggleLayer(7, this)" data-layer="7">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(8, this)" data-layer="8">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RT RW 1 -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('rt-rw1')">
-                    <span class="layer-group-title">
-                        🏠 RT - RW 1
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-rt-rw1">▼</span>
-                </div>
-                <div class="layer-list" id="group-rt-rw1">
-                    <div class="layer-item">
-                        <span class="layer-name">RT 1 RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(33, this)" data-layer="33">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 2 RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(32, this)" data-layer="32">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 3 RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(31, this)" data-layer="31">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 4 RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(30, this)" data-layer="30">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 5 RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(29, this)" data-layer="29">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 6 RW 1</span>
-                        <div class="toggle-switch" onclick="toggleLayer(28, this)" data-layer="28">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RT RW 2 -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('rt-rw2')">
-                    <span class="layer-group-title">
-                        🏠 RT - RW 2
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-rt-rw2">▼</span>
-                </div>
-                <div class="layer-list" id="group-rt-rw2">
-                    <div class="layer-item">
-                        <span class="layer-name">RT 1 RW 2</span>
-                        <div class="toggle-switch" onclick="toggleLayer(27, this)" data-layer="27">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 2 RW 2</span>
-                        <div class="toggle-switch" onclick="toggleLayer(26, this)" data-layer="26">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 3 RW 2</span>
-                        <div class="toggle-switch" onclick="toggleLayer(25, this)" data-layer="25">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RT RW 3 -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('rt-rw3')">
-                    <span class="layer-group-title">
-                        🏠 RT - RW 3
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-rt-rw3">▼</span>
-                </div>
-                <div class="layer-list" id="group-rt-rw3">
-                    <div class="layer-item">
-                        <span class="layer-name">RT 1 RW 3</span>
-                        <div class="toggle-switch" onclick="toggleLayer(20, this)" data-layer="20">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 2 RW 3</span>
-                        <div class="toggle-switch" onclick="toggleLayer(19, this)" data-layer="19">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 3 RW 3</span>
-                        <div class="toggle-switch" onclick="toggleLayer(18, this)" data-layer="18">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RT RW 4 -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('rt-rw4')">
-                    <span class="layer-group-title">
-                        🏠 RT - RW 4
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-rt-rw4">▼</span>
-                </div>
-                <div class="layer-list" id="group-rt-rw4">
-                    <div class="layer-item">
-                        <span class="layer-name">RT 1 RW 4</span>
-                        <div class="toggle-switch" onclick="toggleLayer(17, this)" data-layer="17">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 2 RW 4</span>
-                        <div class="toggle-switch" onclick="toggleLayer(16, this)" data-layer="16">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 3 RW 4</span>
-                        <div class="toggle-switch" onclick="toggleLayer(15, this)" data-layer="15">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 4 RW 4</span>
-                        <div class="toggle-switch" onclick="toggleLayer(14, this)" data-layer="14">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 5 RW 4</span>
-                        <div class="toggle-switch" onclick="toggleLayer(13, this)" data-layer="13">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RT RW 5 -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('rt-rw5')">
-                    <span class="layer-group-title">
-                        🏠 RT - RW 5
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-rt-rw5">▼</span>
-                </div>
-                <div class="layer-list" id="group-rt-rw5">
-                    <div class="layer-item">
-                        <span class="layer-name">RT 1 RW 5</span>
-                        <div class="toggle-switch" onclick="toggleLayer(24, this)" data-layer="24">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 2 RW 5</span>
-                        <div class="toggle-switch" onclick="toggleLayer(23, this)" data-layer="23">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 3 RW 5</span>
-                        <div class="toggle-switch" onclick="toggleLayer(22, this)" data-layer="22">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 4 RW 5</span>
-                        <div class="toggle-switch" onclick="toggleLayer(21, this)" data-layer="21">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RT RW 6 -->
+            <!-- RT RW6 -->
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('rt-rw6')">
                     <span class="layer-group-title">
@@ -333,38 +174,224 @@
                 </div>
                 <div class="layer-list" id="group-rt-rw6">
                     <div class="layer-item">
-                        <span class="layer-name">RT 1 RW 6</span>
-                        <div class="toggle-switch" onclick="toggleLayer(12, this)" data-layer="12">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 2 RW 6</span>
-                        <div class="toggle-switch" onclick="toggleLayer(11, this)" data-layer="11">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 3 RW 6</span>
-                        <div class="toggle-switch" onclick="toggleLayer(10, this)" data-layer="10">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">RT 4 RW 6</span>
+                        <span class="layer-name">RT 6 RW 6</span>
                         <div class="toggle-switch" onclick="toggleLayer(9, this)" data-layer="9">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">RT 5 RW 6</span>
-                        <div class="toggle-switch" onclick="toggleLayer(8, this)" data-layer="8">
+                        <div class="toggle-switch" onclick="toggleLayer(10, this)" data-layer="10">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">RT 6 RW 6</span>
-                        <div class="toggle-switch" onclick="toggleLayer(7, this)" data-layer="7">
+                        <span class="layer-name">RT 4 RW 6</span>
+                        <div class="toggle-switch" onclick="toggleLayer(11, this)" data-layer="11">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 3 RW 6</span>
+                        <div class="toggle-switch" onclick="toggleLayer(12, this)" data-layer="12">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 2 RW 6</span>
+                        <div class="toggle-switch" onclick="toggleLayer(13, this)" data-layer="13">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 1 RW 6</span>
+                        <div class="toggle-switch" onclick="toggleLayer(14, this)" data-layer="14">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RT RW4 -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('rt-rw4')">
+                    <span class="layer-group-title">
+                        🏠 RT - RW 4
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-rt-rw4">▼</span>
+                </div>
+                <div class="layer-list" id="group-rt-rw4">
+                    <div class="layer-item">
+                        <span class="layer-name">RT 5 RW 4</span>
+                        <div class="toggle-switch" onclick="toggleLayer(15, this)" data-layer="15">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 4 RW 4</span>
+                        <div class="toggle-switch" onclick="toggleLayer(16, this)" data-layer="16">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 3 RW 4</span>
+                        <div class="toggle-switch" onclick="toggleLayer(17, this)" data-layer="17">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 2 RW 4</span>
+                        <div class="toggle-switch" onclick="toggleLayer(18, this)" data-layer="18">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 1 RW 4</span>
+                        <div class="toggle-switch" onclick="toggleLayer(19, this)" data-layer="19">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RT RW3 -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('rt-rw3')">
+                    <span class="layer-group-title">
+                        🏠 RT - RW 3
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-rt-rw3">▼</span>
+                </div>
+                <div class="layer-list" id="group-rt-rw3">
+                    <div class="layer-item">
+                        <span class="layer-name">RT 3 RW 3</span>
+                        <div class="toggle-switch" onclick="toggleLayer(20, this)" data-layer="20">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 2 RW 3</span>
+                        <div class="toggle-switch" onclick="toggleLayer(21, this)" data-layer="21">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 1 RW 3</span>
+                        <div class="toggle-switch" onclick="toggleLayer(22, this)" data-layer="22">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RT RW5 -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('rt-rw5')">
+                    <span class="layer-group-title">
+                        🏠 RT - RW 5
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-rt-rw5">▼</span>
+                </div>
+                <div class="layer-list" id="group-rt-rw5">
+                    <div class="layer-item">
+                        <span class="layer-name">RT 4 RW 5</span>
+                        <div class="toggle-switch" onclick="toggleLayer(23, this)" data-layer="23">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 3 RW 5</span>
+                        <div class="toggle-switch" onclick="toggleLayer(24, this)" data-layer="24">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 2 RW 5</span>
+                        <div class="toggle-switch" onclick="toggleLayer(25, this)" data-layer="25">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 1 RW 5</span>
+                        <div class="toggle-switch" onclick="toggleLayer(26, this)" data-layer="26">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RT RW2 -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('rt-rw2')">
+                    <span class="layer-group-title">
+                        🏠 RT - RW 2
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-rt-rw2">▼</span>
+                </div>
+                <div class="layer-list" id="group-rt-rw2">
+                    <div class="layer-item">
+                        <span class="layer-name">RT 3 RW 2</span>
+                        <div class="toggle-switch" onclick="toggleLayer(27, this)" data-layer="27">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 2 RW 2</span>
+                        <div class="toggle-switch" onclick="toggleLayer(28, this)" data-layer="28">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 1 RW 2</span>
+                        <div class="toggle-switch" onclick="toggleLayer(29, this)" data-layer="29">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RT RW1 -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('rt-rw1')">
+                    <span class="layer-group-title">
+                        🏠 RT - RW 1
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-rt-rw1">▼</span>
+                </div>
+                <div class="layer-list" id="group-rt-rw1">
+                    <div class="layer-item">
+                        <span class="layer-name">RT 6 RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(30, this)" data-layer="30">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 5 RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(31, this)" data-layer="31">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 4 RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(32, this)" data-layer="32">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 3 RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(33, this)" data-layer="33">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 2 RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(34, this)" data-layer="34">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">RT 1 RW 1</span>
+                        <div class="toggle-switch" onclick="toggleLayer(35, this)" data-layer="35">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -381,32 +408,32 @@
                 </div>
                 <div class="layer-list" id="group-landuse">
                     <div class="layer-item">
-                        <span class="layer-name">Sawah</span>
-                        <div class="toggle-switch" onclick="toggleLayer(38, this)" data-layer="38">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Sawah Saya</span>
-                        <div class="toggle-switch" onclick="toggleLayer(47, this)" data-layer="47">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Perhutani</span>
-                        <div class="toggle-switch" onclick="toggleLayer(37, this)" data-layer="37">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Perkebunan</span>
+                        <span class="layer-name">Hutan Kebun Warga</span>
                         <div class="toggle-switch" onclick="toggleLayer(36, this)" data-layer="36">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Hutan Kebun Warga</span>
-                        <div class="toggle-switch" onclick="toggleLayer(34, this)" data-layer="34">
+                        <span class="layer-name">Perkebunan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(38, this)" data-layer="38">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Perhutani</span>
+                        <div class="toggle-switch" onclick="toggleLayer(39, this)" data-layer="39">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Sawah</span>
+                        <div class="toggle-switch" onclick="toggleLayer(40, this)" data-layer="40">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Sawah Saya</span>
+                        <div class="toggle-switch" onclick="toggleLayer(48, this)" data-layer="48">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -423,86 +450,56 @@
                 </div>
                 <div class="layer-list" id="group-buildings">
                     <div class="layer-item">
-                        <span class="layer-name">Building</span>
-                        <div class="toggle-switch" onclick="toggleLayer(35, this)" data-layer="35">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Rumah Saya</span>
-                        <div class="toggle-switch" onclick="toggleLayer(42, this)" data-layer="42">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Balai Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(48, this)" data-layer="48">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Rumah Tokoh Masyarakat</span>
-                        <div class="toggle-switch" onclick="toggleLayer(50, this)" data-layer="50">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Fasilitas Pendidikan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(41, this)" data-layer="41">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Fasilitas Kesehatan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(51, this)" data-layer="51">
+                        <span class="layer-name">Bangunan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(37, this)" data-layer="37">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Tempat Ibadah</span>
-                        <div class="toggle-switch" onclick="toggleLayer(39, this)" data-layer="39">
+                        <div class="toggle-switch" onclick="toggleLayer(41, this)" data-layer="41">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Kuburan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(40, this)" data-layer="40">
+                        <span class="layer-name">Fasilitas Pendidikan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(42, this)" data-layer="42">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Komersial -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('commercial')">
-                    <span class="layer-group-title">
-                        🏪 Komersial
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-commercial">▼</span>
-                </div>
-                <div class="layer-list" id="group-commercial">
                     <div class="layer-item">
-                        <span class="layer-name">Warung Makan</span>
+                        <span class="layer-name">Rumah Saya</span>
                         <div class="toggle-switch" onclick="toggleLayer(43, this)" data-layer="43">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Toko</span>
-                        <div class="toggle-switch" onclick="toggleLayer(45, this)" data-layer="45">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Bengkel</span>
-                        <div class="toggle-switch" onclick="toggleLayer(46, this)" data-layer="46">
+                        <span class="layer-name">Balai Desa</span>
+                        <div class="toggle-switch" onclick="toggleLayer(49, this)" data-layer="49">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">SPBU</span>
-                        <div class="toggle-switch" onclick="toggleLayer(49, this)" data-layer="49">
+                        <div class="toggle-switch" onclick="toggleLayer(50, this)" data-layer="50">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Rumah Tokoh Masyarakat</span>
+                        <div class="toggle-switch" onclick="toggleLayer(51, this)" data-layer="51">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Fasilitas Kesehatan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(52, this)" data-layer="52">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Kuburan Desa</span>
+                        <div class="toggle-switch" onclick="toggleLayer(53, this)" data-layer="53">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -519,8 +516,38 @@
                 </div>
                 <div class="layer-list" id="group-public">
                     <div class="layer-item">
-                        <span class="layer-name">Lapangan</span>
+                        <span class="layer-name">Clipped</span>
                         <div class="toggle-switch" onclick="toggleLayer(44, this)" data-layer="44">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Lapangan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(45, this)" data-layer="45">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Komersial -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('commercial')">
+                    <span class="layer-group-title">
+                        🏪 Komersial
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-commercial">▼</span>
+                </div>
+                <div class="layer-list" id="group-commercial">
+                    <div class="layer-item">
+                        <span class="layer-name">Toko</span>
+                        <div class="toggle-switch" onclick="toggleLayer(46, this)" data-layer="46">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Bengkel</span>
+                        <div class="toggle-switch" onclick="toggleLayer(47, this)" data-layer="47">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -538,19 +565,19 @@
                 <div class="layer-list" id="group-infrastructure">
                     <div class="layer-item">
                         <span class="layer-name">Jalan Kecamatan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(52, this)" data-layer="52">
+                        <div class="toggle-switch" onclick="toggleLayer(54, this)" data-layer="54">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Jalan Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(53, this)" data-layer="53">
+                        <div class="toggle-switch" onclick="toggleLayer(55, this)" data-layer="55">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Sungai</span>
-                        <div class="toggle-switch" onclick="toggleLayer(54, this)" data-layer="54">
+                        <div class="toggle-switch" onclick="toggleLayer(56, this)" data-layer="56">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -562,6 +589,8 @@
     <script src="resources/qgis2web_expressions.js"></script>
     <script src="./resources/functions.js"></script>
     <script src="./resources/ol.js"></script>
+    <script src="resources/horsey.min.js"></script>
+    <script src="resources/ol-search-layer.js"></script>
     <script src="./resources/ol-layerswitcher.js"></script>
     <script src="resources/photon-geocoder-autocomplete.min.js"></script>
     <script src="loader.js"></script>

@@ -1,0 +1,1 @@
+var json_Rumah_saya_31 = {"type":"FeatureCollection","name":"Rumah_saya_31","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"2","Nama":"Rumah oca","Alamat":"Karanggayam rt2/rw1"},"geometry":{"type":"Point","coordinates":[108.988886377052836,-7.485410583411013]}}]}

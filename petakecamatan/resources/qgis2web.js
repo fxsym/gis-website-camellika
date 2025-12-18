@@ -9,7 +9,7 @@ var map = new ol.Map({
 });
 
 //initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([12124470.666563, -841930.661721, 12145361.794898, -830995.188347], map.getSize());
+map.getView().fit([12128211.648447, -847749.520693, 12183017.716629, -829756.238677], map.getSize());
 
 ////small screen definition
     var hasTouchScreen = map.getViewport().classList.contains('ol-touch');
@@ -113,7 +113,7 @@ var featureOverlay = new ol.layer.Vector({
     updateWhileInteracting: true // optional, for instant visual feedback
 });
 
-var doHighlight = true;
+var doHighlight = false;
 var doHover = false;
 
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
@@ -642,7 +642,7 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
     placeholder: "Search an address",
     formatResult: formatResult,
     //url: API_URL + "/search/?",
-    url: url["France BAN"],
+    url: url["Nominatim OSM"],
     position: "topright",
     // ,includePosition: function() {
     //   return ol.proj.transform(
@@ -686,18 +686,6 @@ var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //layer search
 
-var searchLayer = new SearchLayer({
-    layer: lyr_desa_besuki_16,
-    colName: 'KDCBPS',
-    zoom: 10,
-    collapsed: true,
-    map: map,
-    maxResults: 10,
-});
-map.addControl(searchLayer);
-document.getElementsByClassName('search-layer')[0].getElementsByTagName('button')[0].className += ' fa fa-binoculars';
-document.getElementsByClassName('search-layer-input-search')[0].placeholder = 'Search feature ...';
-    
 
 //scalebar
 

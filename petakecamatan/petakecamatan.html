@@ -9,8 +9,6 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="./resources/ol.css">
     <link rel="stylesheet" href="resources/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
-    <link rel="stylesheet" type="text/css" href="resources/ol-search-layer.min.css">
     <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
     <link rel="stylesheet" href="./resources/qgis2web.css">
@@ -29,7 +27,7 @@
                 <li><a href="../petadesa/petadesa.html" class="nav-link">Peta Desa</a></li>
                 <li><a href="petakecamatan.html" class="nav-link active">Peta Kecamatan</a></li>
                 <li><a href="../tentang.html" class="nav-link">Tentang</a></li>
-                
+
                 <!-- Hamburger Menu - Always Visible -->
                 <li>
                     <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle Layer Panel">
@@ -84,8 +82,14 @@
                 </div>
                 <div class="layer-list" id="group-basemap">
                     <div class="layer-item">
-                        <span class="layer-name">OpenStreetMap</span>
+                        <span class="layer-name">Satelit</span>
                         <div class="toggle-switch" onclick="toggleLayer(0, this)" data-layer="0">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">OpenStreetMap</span>
+                        <div class="toggle-switch" onclick="toggleLayer(1, this)" data-layer="1">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -103,49 +107,13 @@
                 <div class="layer-list" id="group-admin">
                     <div class="layer-item">
                         <span class="layer-name">Batas Kecamatan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(1, this)" data-layer="1">
+                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Batas Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Penggunaan Lahan -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('landuse')">
-                    <span class="layer-group-title">
-                        🌾 Penggunaan Lahan
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-landuse">▼</span>
-                </div>
-                <div class="layer-list" id="group-landuse">
-                    <div class="layer-item">
-                        <span class="layer-name">Perkebunan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Sawah</span>
-                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Ladang</span>
-                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Hutan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
+                        <div class="toggle-switch" onclick="toggleLayer(18, this)" data-layer="18">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -156,7 +124,7 @@
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('desa')">
                     <span class="layer-group-title">
-                        🏘️ Desa
+                        🏘️ Wilayah Desa
                     </span>
                     <span class="layer-group-toggle" id="toggle-desa">▼</span>
                 </div>
@@ -224,6 +192,42 @@
                 </div>
             </div>
 
+            <!-- Penggunaan Lahan -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('landuse')">
+                    <span class="layer-group-title">
+                        🌾 Penggunaan Lahan
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-landuse">▼</span>
+                </div>
+                <div class="layer-list" id="group-landuse">
+                    <div class="layer-item">
+                        <span class="layer-name">Perkebunan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Sawah</span>
+                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Ladang</span>
+                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Hutan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Bangunan & Fasilitas -->
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('buildings')">
@@ -241,67 +245,67 @@
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Balai Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(20, this)" data-layer="20">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Kantor Kecamatan</span>
                         <div class="toggle-switch" onclick="toggleLayer(21, this)" data-layer="21">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Fasilitas Pendidikan</span>
+                        <span class="layer-name">Kantor Kecamatan</span>
                         <div class="toggle-switch" onclick="toggleLayer(22, this)" data-layer="22">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Fasilitas Kesehatan</span>
+                        <span class="layer-name">Fasilitas Pendidikan</span>
                         <div class="toggle-switch" onclick="toggleLayer(23, this)" data-layer="23">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Tempat Wisata</span>
+                        <span class="layer-name">Fasilitas Kesehatan</span>
                         <div class="toggle-switch" onclick="toggleLayer(24, this)" data-layer="24">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Tempat Ibadah</span>
-                        <div class="toggle-switch" onclick="toggleLayer(25, this)" data-layer="25">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Kuburan</span>
                         <div class="toggle-switch" onclick="toggleLayer(26, this)" data-layer="26">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
+                        <span class="layer-name">Kuburan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(27, this)" data-layer="27">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
                         <span class="layer-name">Rumah Saya</span>
-                        <div class="toggle-switch" onclick="toggleLayer(30, this)" data-layer="30">
+                        <div class="toggle-switch" onclick="toggleLayer(31, this)" data-layer="31">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Fasilitas Umum -->
+            <!-- Fasilitas Umum & Wisata -->
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('public')">
                     <span class="layer-group-title">
-                        ⚽ Fasilitas Umum
+                        ⚽ Fasilitas Umum & Wisata
                     </span>
                     <span class="layer-group-toggle" id="toggle-public">▼</span>
                 </div>
                 <div class="layer-list" id="group-public">
                     <div class="layer-item">
+                        <span class="layer-name">Wisata</span>
+                        <div class="toggle-switch" onclick="toggleLayer(25, this)" data-layer="25">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
                         <span class="layer-name">Lapangan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(27, this)" data-layer="27">
+                        <div class="toggle-switch" onclick="toggleLayer(28, this)" data-layer="28">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -319,13 +323,13 @@
                 <div class="layer-list" id="group-commercial">
                     <div class="layer-item">
                         <span class="layer-name">Toko</span>
-                        <div class="toggle-switch" onclick="toggleLayer(28, this)" data-layer="28">
+                        <div class="toggle-switch" onclick="toggleLayer(29, this)" data-layer="29">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Tempat Makan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(29, this)" data-layer="29">
+                        <div class="toggle-switch" onclick="toggleLayer(30, this)" data-layer="30">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -343,13 +347,13 @@
                 <div class="layer-list" id="group-infrastructure">
                     <div class="layer-item">
                         <span class="layer-name">Jalan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(18, this)" data-layer="18">
+                        <div class="toggle-switch" onclick="toggleLayer(19, this)" data-layer="19">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Sungai</span>
-                        <div class="toggle-switch" onclick="toggleLayer(19, this)" data-layer="19">
+                        <div class="toggle-switch" onclick="toggleLayer(20, this)" data-layer="20">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -361,8 +365,6 @@
     <script src="resources/qgis2web_expressions.js"></script>
     <script src="./resources/functions.js"></script>
     <script src="./resources/ol.js"></script>
-    <script src="resources/horsey.min.js"></script>
-    <script src="resources/ol-search-layer.js"></script>
     <script src="./resources/ol-layerswitcher.js"></script>
     <script src="resources/photon-geocoder-autocomplete.min.js"></script>
     <script src="loader.js"></script>
@@ -500,8 +502,8 @@
 
         // Close panel when clicking outside
         document.addEventListener('click', function (e) {
-            if (!layerPanel.contains(e.target) && 
-                !hamburgerMenu.contains(e.target) && 
+            if (!layerPanel.contains(e.target) &&
+                !hamburgerMenu.contains(e.target) &&
                 !layerPanel.classList.contains('collapsed')) {
                 layerPanel.classList.add('collapsed');
                 hamburgerMenu.classList.remove('active');
