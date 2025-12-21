@@ -65,7 +65,7 @@
 
         <!-- Search Box -->
         <div class="search-container">
-            <input type="text" class="search-box" id="layerSearch" placeholder="Cari layer...">
+            <input type="text" class="search-box" id="layerSearch" placeholder="Cari layer atau lokasi...">
             <span class="search-icon">🔍</span>
             <div class="search-results" id="searchResults"></div>
         </div>
@@ -374,11 +374,12 @@
         // Global variable to store map layers
         let mapLayers = [];
         let mapInitialized = false;
+        let featureDatabase = [];
+        let highlightLayer;
 
         // Wait for map to be fully initialized
         function getAllLayers(layerArray) {
             let allLayers = [];
-
             layerArray.forEach(layer => {
                 if (layer.getLayers) {
                     allLayers = allLayers.concat(getAllLayers(layer.getLayers().getArray()));
@@ -386,14 +387,12 @@
                     allLayers.push(layer);
                 }
             });
-
             return allLayers;
         }
 
         function initializeMapLayers() {
             if (typeof map !== 'undefined' && map.getLayers) {
                 mapLayers = getAllLayers(map.getLayers().getArray());
-
                 if (mapLayers.length > 0) {
                     mapInitialized = true;
                     console.log(`Map initialized with ${mapLayers.length} layers`);
@@ -404,19 +403,214 @@
             return false;
         }
 
+        // Fungsi untuk mengindeks semua features dari layers
+        function indexAllFeatures() {
+            featureDatabase = [];
+            mapLayers.forEach((layer, layerIndex) => {
+                if (layer.getSource && typeof layer.getSource === 'function') {
+                    const source = layer.getSource();
+                    if (source && source.getFeatures) {
+                        const features = source.getFeatures();
+                        features.forEach(feature => {
+                            const properties = feature.getProperties();
+                            const geometry = feature.getGeometry();
+                            const toggleElement = document.querySelector(`[data-layer="${layerIndex}"]`);
+                            const layerName = toggleElement ?
+                                toggleElement.closest('.layer-item').querySelector('.layer-name').textContent :
+                                `Layer ${layerIndex}`;
+                            featureDatabase.push({
+                                layerIndex: layerIndex,
+                                layerName: layerName,
+                                feature: feature,
+                                geometry: geometry,
+                                properties: properties,
+                                searchText: createSearchText(properties)
+                            });
+                        });
+                    }
+                }
+            });
+            console.log(`✅ Indexed ${featureDatabase.length} features`);
+        }
+
+        // PERBAIKAN: Fungsi untuk membuat teks pencarian dengan semua variasi case
+        function createSearchText(properties) {
+            let searchTerms = [];
+            // Tambahkan semua variasi case untuk field-field penting
+            const searchFields = [
+                'Nama', 'nama', 'NAMA',           // Variasi nama
+                'name', 'NAME',                    // Nama dalam bahasa Inggris
+                'Jenjang', 'jenjang',             // Jenjang pendidikan
+                'Alamat', 'alamat',               // Alamat
+                'Jenis', 'jenis',                 // Jenis fasilitas
+                'Keterangan', 'keterangan',       // Keterangan tambahan
+                'Desa', 'desa',                   // Nama desa
+                'Kategori', 'kategori'            // Kategori
+            ];
+
+            searchFields.forEach(field => {
+                if (properties[field]) {
+                    searchTerms.push(properties[field].toString().toLowerCase());
+                }
+            });
+
+            return searchTerms.join(' ');
+        }
+
+        // Fungsi untuk mencari features
+        function searchFeatures(searchTerm) {
+            if (!searchTerm || searchTerm.length < 2) return [];
+            const term = searchTerm.toLowerCase();
+            const results = [];
+            featureDatabase.forEach(item => {
+                if (item.searchText.includes(term)) {
+                    results.push(item);
+                }
+            });
+            return results.slice(0, 10);
+        }
+
+        // Fungsi untuk zoom ke feature
+        function zoomToFeature(featureData) {
+            const geometry = featureData.geometry;
+            if (!geometry || !map) return;
+
+            const layer = mapLayers[featureData.layerIndex];
+            if (layer) {
+                layer.setVisible(true);
+                const toggleElement = document.querySelector(`[data-layer="${featureData.layerIndex}"]`);
+                if (toggleElement) {
+                    toggleElement.classList.add('active');
+                }
+            }
+
+            const view = map.getView();
+            const extent = geometry.getExtent();
+            view.fit(extent, {
+                duration: 1000,
+                padding: [100, 100, 100, 100],
+                maxZoom: 18
+            });
+
+            highlightFeature(featureData.feature);
+        }
+
+        // Fungsi untuk highlight feature
+        function highlightFeature(feature) {
+            if (highlightLayer) {
+                map.removeLayer(highlightLayer);
+            }
+
+            const highlightStyle = new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: '#f5576c',
+                    width: 3
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(245, 87, 108, 0.2)'
+                }),
+                image: new ol.style.Circle({
+                    radius: 10,
+                    fill: new ol.style.Fill({
+                        color: '#f5576c'
+                    }),
+                    stroke: new ol.style.Stroke({
+                        color: '#ffffff',
+                        width: 2
+                    })
+                })
+            });
+
+            const highlightFeature = feature.clone();
+            highlightLayer = new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    features: [highlightFeature]
+                }),
+                style: highlightStyle,
+                zIndex: 1000
+            });
+
+            map.addLayer(highlightLayer);
+
+            setTimeout(() => {
+                if (highlightLayer) {
+                    map.removeLayer(highlightLayer);
+                    highlightLayer = null;
+                }
+            }, 3000);
+        }
+
+        // Fungsi helper untuk search layer names
+        function searchLayerNames(searchTerm) {
+            const allLayers = document.querySelectorAll('.layer-item');
+            const matches = [];
+            allLayers.forEach(item => {
+                const layerName = item.querySelector('.layer-name').textContent.toLowerCase();
+                const layerGroup = item.closest('.layer-group').querySelector('.layer-group-title').textContent;
+                const layerIndex = item.querySelector('.toggle-switch').getAttribute('data-layer');
+                if (layerName.includes(searchTerm)) {
+                    matches.push({
+                        type: 'layer',
+                        name: item.querySelector('.layer-name').textContent,
+                        group: layerGroup,
+                        layerIndex: layerIndex,
+                        element: item
+                    });
+                }
+            });
+            return matches;
+        }
+
+        // Fungsi untuk mendapatkan nama tampilan feature
+        function getFeatureDisplayName(featureData) {
+            const props = featureData.properties;
+            // Tambahkan semua variasi case
+            const nameFields = ['Nama', 'nama', 'NAMA', 'name', 'NAME', 'Jenis', 'jenis'];
+            for (let field of nameFields) {
+                if (props[field]) {
+                    return props[field];
+                }
+            }
+            const otherFields = ['Jenjang', 'jenjang', 'Alamat', 'alamat', 'Keterangan', 'keterangan', 'Desa', 'desa'];
+            for (let field of otherFields) {
+                if (props[field]) {
+                    return props[field];
+                }
+            }
+            return 'Feature tanpa nama';
+        }
+
+        // Fungsi global untuk zoom dari hasil pencarian
+        window.zoomToFeatureFromSearch = function (layerIndex, featureIndex) {
+            const featureData = featureDatabase[featureIndex];
+            if (featureData) {
+                zoomToFeature(featureData);
+                if (window.innerWidth <= 768) {
+                    document.getElementById('layerPanel').classList.add('collapsed');
+                    document.getElementById('hamburgerMenu').classList.remove('active');
+                }
+                const searchInput = document.getElementById('layerSearch');
+                const searchResults = document.getElementById('searchResults');
+                searchInput.value = '';
+                searchResults.classList.remove('active');
+                searchResults.innerHTML = '';
+            }
+        };
+
         // Check map initialization periodically
-        let checkInterval;
         window.addEventListener('load', function () {
             let attempts = 0;
             const maxAttempts = 20;
-
-            checkInterval = setInterval(function () {
+            const checkInterval = setInterval(function () {
                 attempts++;
-
                 if (initializeMapLayers()) {
                     clearInterval(checkInterval);
                     document.getElementById('loading-screen').classList.add('hidden');
-                    console.log('Map ready!');
+                    console.log('🗺️ Map ready!');
+                    // PERBAIKAN: Tambahkan pemanggilan indexAllFeatures
+                    setTimeout(() => {
+                        indexAllFeatures();
+                    }, 2000);
                 } else if (attempts >= maxAttempts) {
                     clearInterval(checkInterval);
                     document.getElementById('loading-screen').classList.add('hidden');
@@ -431,18 +625,15 @@
                 console.warn('Map not yet initialized. Please wait...');
                 return;
             }
-
             if (layerIndex < 0 || layerIndex >= mapLayers.length) {
                 console.error(`Layer index ${layerIndex} out of bounds (0-${mapLayers.length - 1})`);
                 return;
             }
-
             const layer = mapLayers[layerIndex];
             if (!layer) {
                 console.warn(`Layer at index ${layerIndex} is undefined`);
                 return;
             }
-
             try {
                 const isVisible = layer.getVisible();
                 layer.setVisible(!isVisible);
@@ -456,7 +647,6 @@
         function updateToggleStates() {
             document.querySelectorAll('.toggle-switch').forEach(toggle => {
                 const layerIndex = parseInt(toggle.getAttribute('data-layer'));
-
                 if (layerIndex >= 0 && layerIndex < mapLayers.length && mapLayers[layerIndex]) {
                     try {
                         const isVisible = mapLayers[layerIndex].getVisible();
@@ -476,31 +666,27 @@
         function toggleGroup(groupId) {
             const groupList = document.getElementById('group-' + groupId);
             const toggleIcon = document.getElementById('toggle-' + groupId);
-
             groupList.classList.toggle('collapsed');
             toggleIcon.classList.toggle('collapsed');
         }
 
-        // Hamburger Menu Toggle - Works on All Screen Sizes
+        // Hamburger Menu Toggle
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const layerPanel = document.getElementById('layerPanel');
         const panelClose = document.getElementById('panelClose');
 
-        // Open/Close panel with hamburger
         hamburgerMenu.addEventListener('click', function (e) {
             e.stopPropagation();
             this.classList.toggle('active');
             layerPanel.classList.toggle('collapsed');
         });
 
-        // Close panel with X button
         panelClose.addEventListener('click', function (e) {
             e.stopPropagation();
             layerPanel.classList.add('collapsed');
             hamburgerMenu.classList.remove('active');
         });
 
-        // Close panel when clicking outside
         document.addEventListener('click', function (e) {
             if (!layerPanel.contains(e.target) &&
                 !hamburgerMenu.contains(e.target) &&
@@ -510,17 +696,16 @@
             }
         });
 
-        // Prevent panel clicks from closing it
         layerPanel.addEventListener('click', function (e) {
             e.stopPropagation();
         });
 
-        // Search functionality
+        // Search functionality - FIXED VERSION
         const searchInput = document.getElementById('layerSearch');
         const searchResults = document.getElementById('searchResults');
 
         searchInput.addEventListener('input', function (e) {
-            const searchTerm = e.target.value.toLowerCase();
+            const searchTerm = e.target.value.toLowerCase().trim();
 
             if (searchTerm.length === 0) {
                 searchResults.classList.remove('active');
@@ -528,29 +713,39 @@
                 return;
             }
 
-            const allLayers = document.querySelectorAll('.layer-item');
-            const matches = [];
+            // Cari di layer names
+            const layerMatches = searchLayerNames(searchTerm);
 
-            allLayers.forEach(item => {
-                const layerName = item.querySelector('.layer-name').textContent.toLowerCase();
-                const layerGroup = item.closest('.layer-group').querySelector('.layer-group-title').textContent;
+            // Cari di features
+            const featureMatches = searchFeatures(searchTerm);
 
-                if (layerName.includes(searchTerm)) {
-                    matches.push({
-                        name: item.querySelector('.layer-name').textContent,
-                        group: layerGroup,
-                        element: item
-                    });
-                }
-            });
+            // Gabungkan hasil
+            const allMatches = [...layerMatches, ...featureMatches];
 
-            if (matches.length > 0) {
-                searchResults.innerHTML = matches.map(match => `
-                    <div class="search-result-item" onclick="scrollToLayer(this)" data-layer="${match.element.querySelector('.toggle-switch').getAttribute('data-layer')}">
-                        <div class="search-result-name">${match.name}</div>
-                        <div class="search-result-layer">${match.group}</div>
+            if (allMatches.length > 0) {
+                searchResults.innerHTML = allMatches.map(match => {
+                    if (match.type === 'layer') {
+                        return `
+                    <div class="search-result-item" onclick="scrollToLayer(this)" data-layer="${match.layerIndex}">
+                        <div class="search-result-icon">📁</div>
+                        <div class="search-result-info">
+                            <div class="search-result-name">${match.name}</div>
+                            <div class="search-result-layer">${match.group}</div>
+                        </div>
                     </div>
-                `).join('');
+                `;
+                    } else {
+                        return `
+                    <div class="search-result-item" onclick="zoomToFeatureFromSearch(${match.layerIndex}, ${featureDatabase.indexOf(match)})" data-feature="${featureDatabase.indexOf(match)}">
+                        <div class="search-result-icon">📍</div>
+                        <div class="search-result-info">
+                            <div class="search-result-name">${getFeatureDisplayName(match)}</div>
+                            <div class="search-result-layer">${match.layerName}</div>
+                        </div>
+                    </div>
+                `;
+                    }
+                }).join('');
                 searchResults.classList.add('active');
             } else {
                 searchResults.innerHTML = '<div class="search-result-item" style="pointer-events: none;">Tidak ada hasil</div>';
@@ -592,7 +787,6 @@
             item.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateX(3px)';
             });
-
             item.addEventListener('mouseleave', function () {
                 this.style.transform = '';
             });
@@ -605,6 +799,8 @@
                 searchResults.innerHTML = '';
             }
         });
+
+        console.log('✅ Enhanced Layer Search with Feature Zoom loaded!');
     </script>
 </body>
 

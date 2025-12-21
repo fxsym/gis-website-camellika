@@ -515,6 +515,205 @@ body {
     border-radius: 10px;
 }
 
+/* Enhanced Search Results Styling */
+
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(240, 147, 251, 0.2);
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.15) 0%, rgba(245, 87, 108, 0.15) 100%);
+    transform: translateX(5px);
+}
+
+.search-result-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 30px;
+    text-align: center;
+}
+
+.search-result-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-result-name {
+    font-weight: 600;
+    color: #f5576c;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+}
+
+.search-result-layer {
+    font-size: 11px;
+    color: #888;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Search Results Container */
+.search-results {
+    margin-top: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 12px;
+    display: none;
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.15);
+}
+
+.search-results.active {
+    display: block;
+    border: 2px solid #f093fb;
+}
+
+/* Animation untuk hasil pencarian */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-results.active .search-result-item {
+    animation: slideIn 0.3s ease forwards;
+}
+
+.search-results.active .search-result-item:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.search-results.active .search-result-item:nth-child(2) {
+    animation-delay: 0.05s;
+}
+
+.search-results.active .search-result-item:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.search-results.active .search-result-item:nth-child(4) {
+    animation-delay: 0.15s;
+}
+
+.search-results.active .search-result-item:nth-child(5) {
+    animation-delay: 0.2s;
+}
+
+/* Scrollbar untuk search results */
+.search-results::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background: rgba(240, 147, 251, 0.1);
+    border-radius: 10px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 10px;
+}
+
+/* Loading indicator (opsional) */
+.search-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #f5576c;
+}
+
+.search-loading::after {
+    content: '🔍';
+    animation: pulse 1s ease infinite;
+}
+
+/* Search Wrapper untuk 2 input terpisah */
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper .search-box {
+    margin-bottom: 0;
+}
+
+/* Styling untuk pembeda visual */
+#layerFilterSearch {
+    border-color: #667eea;
+}
+
+#layerFilterSearch:focus {
+    border-color: #667eea;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+}
+
+#featureSearch {
+    border-color: #f093fb;
+}
+
+#featureSearch:focus {
+    border-color: #f5576c;
+    box-shadow: 0 5px 20px rgba(245, 87, 108, 0.2);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .search-result-item {
+        padding: 14px 12px;
+    }
+
+    .search-result-icon {
+        font-size: 20px;
+        width: 25px;
+    }
+
+    .search-result-name {
+        font-size: 12px;
+    }
+
+    .search-result-layer {
+        font-size: 10px;
+    }
+
+    .search-results {
+        max-height: 250px;
+    }
+}
+
 /* ============================================
    RESPONSIVE BREAKPOINTS
    ============================================ */
