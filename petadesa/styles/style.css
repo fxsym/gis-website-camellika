@@ -715,6 +715,47 @@ body {
     }
 }
 
+/* Toggle All Item */
+.toggle-all-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 15px);
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
+    border-radius: 12px;
+    border-left: 4px solid #f5576c;
+    box-shadow: 0 2px 8px rgba(245, 87, 108, 0.15);
+}
+
+.toggle-all-name {
+    font-size: clamp(11px, 2vw, 12px);
+    color: #333;
+    font-weight: 600;
+    flex: 1;
+    padding-right: 8px;
+}
+
+.toggle-all-switch-container {
+    display: flex;
+    gap: 8px;
+}
+
+/* Mobile responsive untuk toggle all */
+@media (max-width: 480px) {
+    .toggle-all-item {
+        padding: 10px 12px;
+    }
+
+    .toggle-all-name {
+        font-size: 11px;
+    }
+
+    .toggle-all-switch-container {
+        gap: 6px;
+    }
+}
+
 /* ============================================
    RESPONSIVE BREAKPOINTS
    ============================================ */

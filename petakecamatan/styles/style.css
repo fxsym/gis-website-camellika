@@ -155,6 +155,7 @@ body {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -714,6 +715,47 @@ body {
     }
 }
 
+/* Toggle All Item */
+.toggle-all-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(10px, 2vw, 12px) clamp(12px, 2.5vw, 15px);
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, rgba(240, 147, 251, 0.2) 0%, rgba(245, 87, 108, 0.2) 100%);
+    border-radius: 12px;
+    border-left: 4px solid #f5576c;
+    box-shadow: 0 2px 8px rgba(245, 87, 108, 0.15);
+}
+
+.toggle-all-name {
+    font-size: clamp(11px, 2vw, 12px);
+    color: #333;
+    font-weight: 600;
+    flex: 1;
+    padding-right: 8px;
+}
+
+.toggle-all-switch-container {
+    display: flex;
+    gap: 8px;
+}
+
+/* Mobile responsive untuk toggle all */
+@media (max-width: 480px) {
+    .toggle-all-item {
+        padding: 10px 12px;
+    }
+
+    .toggle-all-name {
+        font-size: 11px;
+    }
+
+    .toggle-all-switch-container {
+        gap: 6px;
+    }
+}
+
 /* ============================================
    RESPONSIVE BREAKPOINTS
    ============================================ */
@@ -733,22 +775,22 @@ body {
         padding: 70px 20px 20px 20px;
         z-index: 1001;
     }
-    
+
     .layer-panel.collapsed {
         transform: translateY(-100%);
     }
-    
+
     .panel-close {
         top: 20px;
         right: 20px;
         width: 40px;
         height: 40px;
     }
-    
+
     .navbar {
         padding: 12px 0;
     }
-    
+
     #map {
         height: calc(100vh - 55px);
     }
@@ -759,11 +801,11 @@ body {
     .layer-panel {
         padding: 60px 15px 15px 15px;
     }
-    
+
     .layer-group {
         margin-bottom: 8px;
     }
-    
+
     .layer-item {
         margin-bottom: 4px;
         padding: 8px 10px;
@@ -775,24 +817,24 @@ body {
     .nav-container {
         padding: 0 15px;
     }
-    
+
     .nav-menu {
         gap: 8px;
     }
-    
+
     .nav-link {
         font-size: 12px;
     }
-    
+
     .layer-panel {
         padding: 60px 15px 15px 15px;
     }
-    
+
     .panel-header {
         font-size: 18px;
         margin-bottom: 12px;
     }
-    
+
     .ol-zoom {
         top: 65px !important;
         left: 35px !important;
@@ -804,35 +846,35 @@ body {
     .logo {
         font-size: 16px;
     }
-    
+
     .nav-menu {
         gap: 6px;
     }
-    
+
     .nav-link {
         font-size: 11px;
         padding: 3px 0;
     }
-    
+
     .hamburger-menu {
         padding: 6px;
     }
-    
+
     .hamburger-line {
         width: 22px;
         height: 2.5px;
     }
-    
+
     .layer-panel {
         padding: 60px 12px 12px 12px;
     }
-    
+
     .panel-header {
         font-size: 16px;
         margin-bottom: 10px;
         padding-bottom: 8px;
     }
-    
+
     .ol-control button {
         width: 30px !important;
         height: 30px !important;
@@ -845,33 +887,33 @@ body {
     .logo {
         font-size: 14px;
     }
-    
+
     .nav-link {
         font-size: 10px;
     }
-    
+
     .hamburger-line {
         width: 20px;
     }
-    
+
     .layer-panel {
         padding: 55px 10px 10px 10px;
     }
-    
+
     .panel-header {
         font-size: 14px;
     }
-    
+
     .toggle-switch {
         width: 32px;
         height: 16px;
     }
-    
+
     .toggle-slider {
         width: 12px;
         height: 12px;
     }
-    
+
     .toggle-switch.active .toggle-slider {
         transform: translateX(16px);
     }
@@ -890,12 +932,12 @@ body {
     .nav-container {
         max-width: 1400px;
     }
-    
+
     .layer-panel {
         width: 350px;
         padding: 30px;
     }
-    
+
     .panel-header {
         font-size: 22px;
     }
@@ -903,6 +945,7 @@ body {
 
 /* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
+
     .layer-item,
     .layer-group-header,
     .toggle-switch,
@@ -910,22 +953,22 @@ body {
     .panel-close {
         -webkit-tap-highlight-color: transparent;
     }
-    
+
     .layer-item {
         padding: 12px;
         margin-bottom: 8px;
     }
-    
+
     .toggle-switch {
         width: 42px;
         height: 22px;
     }
-    
+
     .toggle-slider {
         width: 18px;
         height: 18px;
     }
-    
+
     .toggle-switch.active .toggle-slider {
         transform: translateX(20px);
     }
@@ -933,13 +976,14 @@ body {
 
 /* Print Styles */
 @media print {
+
     .navbar,
     .layer-panel,
     .ol-control,
     .hamburger-menu {
         display: none !important;
     }
-    
+
     #map {
         height: 100vh !important;
         width: 100vw !important;

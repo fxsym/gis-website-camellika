@@ -70,6 +70,14 @@
             <div class="search-results" id="searchResults"></div>
         </div>
 
+        <!-- Toggle All Layer -->
+        <div class="toggle-all-item">
+            <span class="toggle-all-name">⚡Semua Layer</span>
+            <div class="toggle-switch" id="toggleAllSwitch" onclick="toggleAllLayersSwitch(this)">
+                <div class="toggle-slider"></div>
+            </div>
+        </div>
+
         <!-- Layer Groups -->
         <div id="layerGroups">
             <!-- Base Map -->
@@ -396,6 +404,18 @@
                 if (mapLayers.length > 0) {
                     mapInitialized = true;
                     console.log(`Map initialized with ${mapLayers.length} layers`);
+
+                    // Set all layers to visible by default (except keep base maps as is)
+                    for (let i = 2; i < mapLayers.length; i++) {
+                        if (mapLayers[i] && mapLayers[i].setVisible) {
+                            try {
+                                mapLayers[i].setVisible(true);
+                            } catch (error) {
+                                console.warn(`Cannot set visibility for layer ${i}:`, error);
+                            }
+                        }
+                    }
+
                     updateToggleStates();
                     return true;
                 }
@@ -431,6 +451,52 @@
                 }
             });
             console.log(`✅ Indexed ${featureDatabase.length} features`);
+        }
+
+        // Toggle All Layers Function - Single Switch
+        function toggleAllLayersSwitch(toggleElement) {
+            if (!mapInitialized) {
+                console.warn('Map not yet initialized. Please wait...');
+                return;
+            }
+
+            // Check current state
+            const isCurrentlyActive = toggleElement.classList.contains('active');
+            const newState = !isCurrentlyActive;
+
+            // Skip base maps (layer 0 and 1)
+            for (let i = 2; i < mapLayers.length; i++) {
+                const layer = mapLayers[i];
+                if (layer) {
+                    try {
+                        layer.setVisible(newState);
+                    } catch (error) {
+                        console.warn(`Cannot toggle layer ${i}:`, error);
+                    }
+                }
+            }
+
+            // Update all toggle switches di layer items
+            document.querySelectorAll('.layer-item .toggle-switch').forEach(toggle => {
+                const layerIndex = parseInt(toggle.getAttribute('data-layer'));
+                // Skip base maps
+                if (layerIndex >= 2) {
+                    if (newState) {
+                        toggle.classList.add('active');
+                    } else {
+                        toggle.classList.remove('active');
+                    }
+                }
+            });
+
+            // Update toggle all switch visual
+            if (newState) {
+                toggleElement.classList.add('active');
+            } else {
+                toggleElement.classList.remove('active');
+            }
+
+            console.log(`All layers ${newState ? 'enabled' : 'disabled'}`);
         }
 
         // PERBAIKAN: Fungsi untuk membuat teks pencarian dengan semua variasi case
@@ -660,6 +726,31 @@
                     }
                 }
             });
+
+            // Update toggle all switch based on layer states
+            updateToggleAllState();
+        }
+
+        // Function to update toggle all switch state
+        function updateToggleAllState() {
+            const toggleAllSwitch = document.getElementById('toggleAllSwitch');
+            if (!toggleAllSwitch) return;
+
+            // Check if any layer (except base maps) is visible
+            let anyLayerVisible = false;
+            for (let i = 2; i < mapLayers.length; i++) {
+                if (mapLayers[i] && mapLayers[i].getVisible && mapLayers[i].getVisible()) {
+                    anyLayerVisible = true;
+                    break;
+                }
+            }
+
+            // Update toggle all switch
+            if (anyLayerVisible) {
+                toggleAllSwitch.classList.add('active');
+            } else {
+                toggleAllSwitch.classList.remove('active');
+            }
         }
 
         // Toggle group collapse/expand
