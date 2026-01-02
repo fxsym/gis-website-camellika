@@ -17,8 +17,8 @@ var style_Balai_desa_49 = function(feature, resolution){
     var offsetX = 0;
     var offsetY = 0;
     var placement = 'point';
-    if ("" !== null) {
-        labelText = String("");
+    if (feature.get("Nama") !== null && resolution > 0 && resolution < 1) {
+        labelText = String(feature.get("Nama"));
     }
     var style = [ new ol.style.Style({
         image: new ol.style.Icon({
