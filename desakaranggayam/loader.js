@@ -1,4 +1,4 @@
-// Loader Desa Baru
+// Loader Desa Karanggayam
 // ===============================
 // LOADER SEQUENTIAL
 // ===============================

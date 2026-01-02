@@ -1,66 +1,243 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="./resources/ol.css">
-        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
-        <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
-        <link rel="stylesheet" href="./resources/qgis2web.css">
-        <style>
-        html, body {
-            background-color: #ffffff;
-        }
-        .ol-control > * {
-            background-color: #f8f8f8!important;
-            color: #444444!important;
-            border-radius: 0px;
-        }
-        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
-            color: #444444!important;
-        }
-        .search-layer-input-search {
-            background-color: #f8f8f8!important;
-        }
-        .ol-control > *:focus, .ol-control >*:hover {
-            background-color: rgba(248, 248, 248, 0.7)!important;
-        } 
-        .ol-control {
-            background-color: rgba(255,255,255,.4) !important;
-            padding: 2px !important;
-        } 
-        </style>
+<html lang="id">
 
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    </head>
-    <body>
-        <div id="map">
-            <div id="popup" class="ol-popup">
-                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
-                <div id="popup-content"></div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="./resources/ol.css">
+    <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/ol-search-layer.min.css">
+    <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+    <link rel="stylesheet" href="./resources/qgis2web.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <title>Peta Desa Cingebul</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">🗺️ GIS Karanggayam</div>
+
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+                <li class="nav-item" id="dropdownToggle">
+                    <a href="#" class="nav-link active">
+                        Peta Desa
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../desakaranggayam/index.html" class="dropdown-item">🏘️ Desa Karanggayam</a>
+                        <a href="../desacanduk/index.html" class="dropdown-item">🏘️ Desa Canduk</a>
+                        <a href="../desacingebul/index.html" class="dropdown-item">🏘️ Desa Cingebul</a>
+                        <a href="../desaparungkamal/index.html" class="dropdown-item">🏘️ Desa Parungkamal</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="../petakecamatan/petakecamatan.html" class="nav-link">Peta Kecamatan</a>
+                </li>
+                <li class="nav-item"><a href="../tentang.html" class="nav-link">Tentang</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Fixed Hamburger Button -->
+    <button class="hamburger-menu-fixed" id="hamburgerMenu" aria-label="Toggle Layer Panel">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-text">Memuat Peta Desa Cingebul...</div>
+    </div>
+
+    <!-- Map -->
+    <div id="map">
+        <div id="popup" class="ol-popup">
+            <a href="#" id="popup-closer" class="ol-popup-closer">✕</a>
+            <div id="popup-content"></div>
+        </div>
+    </div>
+
+    <!-- Layer Control Panel -->
+    <div class="layer-panel collapsed" id="layerPanel">
+        <!-- Close Button -->
+        <button class="panel-close" id="panelClose" aria-label="Close Panel">✕</button>
+
+        <div class="panel-header">
+            📍 Kontrol Layer
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" class="search-box" id="layerSearch" placeholder="Cari layer atau fitur...">
+            <span class="search-icon">🔍</span>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- Toggle All Layer -->
+        <div class="toggle-all-item">
+            <span class="toggle-all-name">⚡Semua Layer</span>
+            <div class="toggle-switch" id="toggleAllSwitch" onclick="toggleAllLayersSwitch(this)">
+                <div class="toggle-slider"></div>
             </div>
         </div>
-        <script src="resources/qgis2web_expressions.js"></script>
-        <script src="./resources/functions.js"></script>
-        <script src="./resources/ol.js"></script>
-        <script src="./resources/ol-layerswitcher.js"></script>
-        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
-        <script src="layers/desa_cingebul_2.js"></script><script src="layers/sungai_cingebul_3.js"></script><script src="layers/jalan_cingebul_4.js"></script><script src="layers/Tokocopy_5.js"></script><script src="layers/Tempat_makancopy_6.js"></script><script src="layers/tempat_ibadahcopy_7.js"></script><script src="layers/pendidikancopy_8.js"></script><script src="layers/kesehatancopy_9.js"></script><script src="layers/balai_desacopy_10.js"></script>
-        <script src="styles/desa_cingebul_2_style.js"></script><script src="styles/sungai_cingebul_3_style.js"></script><script src="styles/jalan_cingebul_4_style.js"></script><script src="styles/Tokocopy_5_style.js"></script><script src="styles/Tempat_makancopy_6_style.js"></script><script src="styles/tempat_ibadahcopy_7_style.js"></script><script src="styles/pendidikancopy_8_style.js"></script><script src="styles/kesehatancopy_9_style.js"></script><script src="styles/balai_desacopy_10_style.js"></script>
-        <script src="./layers/layers.js" type="text/javascript"></script> 
-        <script src="./resources/Autolinker.min.js"></script>
-        <script src="./resources/qgis2web.js"></script>
-    </body>
+
+        <!-- Layer Groups -->
+        <div id="layerGroups">
+            <!-- Base Map -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('basemap')">
+                    <span class="layer-group-title">
+                        🗺️ Peta Dasar
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-basemap">▼</span>
+                </div>
+                <div class="layer-list" id="group-basemap">
+                    <div class="layer-item">
+                        <span class="layer-name">Satelit</span>
+                        <div class="toggle-switch" onclick="toggleLayer(0, this)" data-layer="0">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">OpenStreetMap</span>
+                        <div class="toggle-switch" onclick="toggleLayer(1, this)" data-layer="1">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batas Administratif -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('admin')">
+                    <span class="layer-group-title">
+                        🏛️ Batas Administratif
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-admin">▼</span>
+                </div>
+                <div class="layer-list" id="group-admin">
+                    <div class="layer-item">
+                        <span class="layer-name">Batas Desa Cingebul</span>
+                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infrastruktur -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('infrastructure')">
+                    <span class="layer-group-title">
+                        🛣️ Infrastruktur
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-infrastructure">▼</span>
+                </div>
+                <div class="layer-list" id="group-infrastructure">
+                    <div class="layer-item">
+                        <span class="layer-name">Sungai</span>
+                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Jalan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bangunan & Fasilitas -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('buildings')">
+                    <span class="layer-group-title">
+                        🏢 Bangunan & Fasilitas
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-buildings">▼</span>
+                </div>
+                <div class="layer-list" id="group-buildings">
+                    <div class="layer-item">
+                        <span class="layer-name">Balai Desa</span>
+                        <div class="toggle-switch" onclick="toggleLayer(10, this)" data-layer="10">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Fasilitas Pendidikan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(8, this)" data-layer="8">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Fasilitas Kesehatan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(9, this)" data-layer="9">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Tempat Ibadah</span>
+                        <div class="toggle-switch" onclick="toggleLayer(7, this)" data-layer="7">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Komersial -->
+            <div class="layer-group">
+                <div class="layer-group-header" onclick="toggleGroup('commercial')">
+                    <span class="layer-group-title">
+                        🏪 Komersial
+                    </span>
+                    <span class="layer-group-toggle" id="toggle-commercial">▼</span>
+                </div>
+                <div class="layer-list" id="group-commercial">
+                    <div class="layer-item">
+                        <span class="layer-name">Toko</span>
+                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Tempat Makan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="resources/qgis2web_expressions.js"></script>
+    <script src="./resources/functions.js"></script>
+    <script src="./resources/ol.js"></script>
+    <script src="resources/horsey.min.js"></script>
+    <script src="resources/ol-search-layer.js"></script>
+    <script src="./resources/ol-layerswitcher.js"></script>
+    <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+    <script src="loader.js"></script>
+    <script src="./resources/Autolinker.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
