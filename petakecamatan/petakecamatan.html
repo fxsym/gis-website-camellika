@@ -60,7 +60,7 @@
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loader"></div>
-        <div class="loading-text">Memuat Peta Kecamatan...</div>
+        <div class="loading-text">Memuat Peta Kecamatan Baru...</div>
     </div>
 
     <!-- Map -->
@@ -132,13 +132,13 @@
                 <div class="layer-list" id="group-admin">
                     <div class="layer-item">
                         <span class="layer-name">Batas Kecamatan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
+                        <div class="toggle-switch" onclick="toggleLayer(20, this)" data-layer="20">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Batas Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(18, this)" data-layer="18">
+                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -161,19 +161,19 @@
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Desa Karanggayam</span>
+                        <span class="layer-name">Desa Lumbir</span>
                         <div class="toggle-switch" onclick="toggleLayer(8, this)" data-layer="8">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Desa Lumbir</span>
+                        <span class="layer-name">Desa Kedunggede</span>
                         <div class="toggle-switch" onclick="toggleLayer(9, this)" data-layer="9">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
-                        <span class="layer-name">Desa Kedunggede</span>
+                        <span class="layer-name">Desa Karanggayam</span>
                         <div class="toggle-switch" onclick="toggleLayer(10, this)" data-layer="10">
                             <div class="toggle-slider"></div>
                         </div>
@@ -228,25 +228,25 @@
                 <div class="layer-list" id="group-landuse">
                     <div class="layer-item">
                         <span class="layer-name">Perkebunan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
+                        <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Sawah</span>
-                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
+                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Ladang</span>
-                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
+                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Hutan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
+                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -372,13 +372,13 @@
                 <div class="layer-list" id="group-infrastructure">
                     <div class="layer-item">
                         <span class="layer-name">Jalan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(19, this)" data-layer="19">
+                        <div class="toggle-switch" onclick="toggleLayer(18, this)" data-layer="18">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Sungai</span>
-                        <div class="toggle-switch" onclick="toggleLayer(20, this)" data-layer="20">
+                        <div class="toggle-switch" onclick="toggleLayer(19, this)" data-layer="19">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -516,19 +516,18 @@
             console.log(`All layers ${newState ? 'enabled' : 'disabled'}`);
         }
 
-        // PERBAIKAN: Fungsi untuk membuat teks pencarian dengan semua variasi case
+        // Fungsi untuk membuat teks pencarian dengan semua variasi case
         function createSearchText(properties) {
             let searchTerms = [];
-            // Tambahkan semua variasi case untuk field-field penting
             const searchFields = [
-                'Nama', 'nama', 'NAMA',           // Variasi nama
-                'name', 'NAME',                    // Nama dalam bahasa Inggris
-                'Jenjang', 'jenjang',             // Jenjang pendidikan
-                'Alamat', 'alamat',               // Alamat
-                'Jenis', 'jenis',                 // Jenis fasilitas
-                'Keterangan', 'keterangan',       // Keterangan tambahan
-                'Desa', 'desa',                   // Nama desa
-                'Kategori', 'kategori'            // Kategori
+                'Nama', 'nama', 'NAMA',
+                'name', 'NAME',
+                'Jenjang', 'jenjang',
+                'Alamat', 'alamat',
+                'Jenis', 'jenis',
+                'Keterangan', 'keterangan',
+                'Desa', 'desa',
+                'Kategori', 'kategori'
             ];
 
             searchFields.forEach(field => {
@@ -647,7 +646,6 @@
         // Fungsi untuk mendapatkan nama tampilan feature
         function getFeatureDisplayName(featureData) {
             const props = featureData.properties;
-            // Tambahkan semua variasi case
             const nameFields = ['Nama', 'nama', 'NAMA', 'name', 'NAME', 'Jenis', 'jenis'];
             for (let field of nameFields) {
                 if (props[field]) {
@@ -690,7 +688,6 @@
                     clearInterval(checkInterval);
                     document.getElementById('loading-screen').classList.add('hidden');
                     console.log('🗺️ Map ready!');
-                    // PERBAIKAN: Tambahkan pemanggilan indexAllFeatures
                     setTimeout(() => {
                         indexAllFeatures();
                     }, 2000);
@@ -748,7 +745,6 @@
             updateToggleAllState();
         }
 
-        // Function to update toggle all switch state
         function updateToggleAllState() {
             const toggleAllSwitch = document.getElementById('toggleAllSwitch');
             if (!toggleAllSwitch) return;

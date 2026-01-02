@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_desa_kedunggede_10 = function(feature, resolution){
+var style_desa_kedunggede_9 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -21,7 +21,7 @@ var style_desa_kedunggede_10 = function(feature, resolution){
         labelText = String(feature.get("NAMOBJ"));
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(51,160,44,1.0)', lineDash: [4.9399999999999995,0.988], lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(253,191,111,1.0)'}),
+        stroke: new ol.style.Stroke({color: 'rgba(202,138,165,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(229,175,198,1.0)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)

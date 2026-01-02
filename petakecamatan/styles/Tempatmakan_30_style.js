@@ -9,16 +9,16 @@ var style_Tempatmakan_30 = function(feature, resolution){
     
     var labelText = ""; 
     var value = feature.get("");
-    var labelFont = "10px, sans-serif";
-    var labelFill = "#000000";
+    var labelFont = "9.1px \'Open Sans\', sans-serif";
+    var labelFill = "#323232";
     var bufferColor = "";
     var bufferWidth = 0;
     var textAlign = "left";
     var offsetX = 0;
     var offsetY = 0;
     var placement = 'point';
-    if ("" !== null) {
-        labelText = String("");
+    if (feature.get("Nama") !== null && resolution > 0 && resolution < 7) {
+        labelText = String(feature.get("Nama"));
     }
     var style = [ new ol.style.Style({
         image: new ol.style.Icon({

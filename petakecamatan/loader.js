@@ -1,19 +1,17 @@
-// Loader Peta Kecamatan
+// loader.js Kecamatan Baru
+
 // ===============================
 // LOADER SEQUENTIAL
 // ===============================
 function loadScriptsSequential(list) {
   return list.reduce((promise, src) => {
-    return promise.then(
-      () =>
-        new Promise((resolve, reject) => {
-          const s = document.createElement("script");
-          s.src = src;
-          s.onload = resolve;
-          s.onerror = () => reject(`Gagal load: ${src}`);
-          document.body.appendChild(s);
-        })
-    );
+    return promise.then(() => new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = src;
+      s.onload = resolve;
+      s.onerror = () => reject(`Gagal load: ${src}`);
+      document.body.appendChild(s);
+    }));
   }, Promise.resolve());
 }
 
@@ -22,22 +20,22 @@ function loadScriptsSequential(list) {
 ================================ */
 const pluginScripts = [
   "./resources/Autolinker.min.js",
-  "resources/photon-geocoder-autocomplete.min.js",
+  "./resources/photon-geocoder-autocomplete.min.js"
 ];
 
 /* ===============================
-   2. LAYERS
+   2. LAYERS (DATA)
 ================================ */
 const layerScripts = [
-  "layers/batas_kecamatan_2.js",
-  "layers/perkebunan_fix_3.js",
-  "layers/sawah_fix_4.js",
-  "layers/ladang_fix_5.js",
-  "layers/hutan_fix_6.js",
+  "layers/perkebunan_fix_2.js",
+  "layers/sawah_fix_3.js",
+  "layers/ladang_fix_4.js",
+  "layers/hutan_fix_5.js",
+  "layers/batas_desa_6.js",
   "layers/desa_parungkamal_7.js",
-  "layers/desa_karanggayam_8.js",
-  "layers/desa_lumbir_9.js",
-  "layers/desa_kedunggede_10.js",
+  "layers/desa_lumbir_8.js",
+  "layers/desa_kedunggede_9.js",
+  "layers/desa_karanggayam_10.js",
   "layers/desa_dermaji_11.js",
   "layers/desa_cirahab_12.js",
   "layers/desa_cingebul_13.js",
@@ -45,9 +43,9 @@ const layerScripts = [
   "layers/desa_canduk_15.js",
   "layers/desa_besuki_16.js",
   "layers/bangunan_17.js",
-  "layers/batas_desa_18.js",
-  "layers/jalan_fix_19.js",
-  "layers/sungai_fix_20.js",
+  "layers/jalan_fix_18.js",
+  "layers/sungai_fix_19.js",
+  "layers/batas_kecamatan_20.js",
   "layers/balai_desa_21.js",
   "layers/kantor_kecamatan_22.js",
   "layers/pendidikan_23.js",
@@ -58,22 +56,22 @@ const layerScripts = [
   "layers/Lapangan_28.js",
   "layers/Toko_29.js",
   "layers/Tempatmakan_30.js",
-  "layers/Rumah_saya_31.js",
+  "layers/Rumah_saya_31.js"
 ];
 
 /* ===============================
    3. STYLES
 ================================ */
 const styleScripts = [
-  "styles/batas_kecamatan_2_style.js",
-  "styles/perkebunan_fix_3_style.js",
-  "styles/sawah_fix_4_style.js",
-  "styles/ladang_fix_5_style.js",
-  "styles/hutan_fix_6_style.js",
+  "styles/perkebunan_fix_2_style.js",
+  "styles/sawah_fix_3_style.js",
+  "styles/ladang_fix_4_style.js",
+  "styles/hutan_fix_5_style.js",
+  "styles/batas_desa_6_style.js",
   "styles/desa_parungkamal_7_style.js",
-  "styles/desa_karanggayam_8_style.js",
-  "styles/desa_lumbir_9_style.js",
-  "styles/desa_kedunggede_10_style.js",
+  "styles/desa_lumbir_8_style.js",
+  "styles/desa_kedunggede_9_style.js",
+  "styles/desa_karanggayam_10_style.js",
   "styles/desa_dermaji_11_style.js",
   "styles/desa_cirahab_12_style.js",
   "styles/desa_cingebul_13_style.js",
@@ -81,9 +79,9 @@ const styleScripts = [
   "styles/desa_canduk_15_style.js",
   "styles/desa_besuki_16_style.js",
   "styles/bangunan_17_style.js",
-  "styles/batas_desa_18_style.js",
-  "styles/jalan_fix_19_style.js",
-  "styles/sungai_fix_20_style.js",
+  "styles/jalan_fix_18_style.js",
+  "styles/sungai_fix_19_style.js",
+  "styles/batas_kecamatan_20_style.js",
   "styles/balai_desa_21_style.js",
   "styles/kantor_kecamatan_22_style.js",
   "styles/pendidikan_23_style.js",
@@ -94,7 +92,7 @@ const styleScripts = [
   "styles/Lapangan_28_style.js",
   "styles/Toko_29_style.js",
   "styles/Tempatmakan_30_style.js",
-  "styles/Rumah_saya_31_style.js",
+  "styles/Rumah_saya_31_style.js"
 ];
 
 /* ===============================
@@ -103,22 +101,11 @@ const styleScripts = [
 loadScriptsSequential(pluginScripts)
   .then(() => loadScriptsSequential(layerScripts))
   .then(() => loadScriptsSequential(styleScripts))
+  .then(() => loadScriptsSequential(["./layers/layers.js"]))
+  .then(() => loadScriptsSequential(["./resources/qgis2web.js"]))
   .then(() => {
-    console.log("Plugins, layers, dan styles berhasil dimuat");
-
-    // layers.js
-    const layersMain = document.createElement("script");
-    layersMain.src = "./layers/layers.js";
-    layersMain.onload = () => {
-      console.log("layers.js loaded");
-
-      // qgis2web.js (TERAKHIR)
-      const qgis = document.createElement("script");
-      qgis.src = "./resources/qgis2web.js";
-      document.body.appendChild(qgis);
-    };
-    document.body.appendChild(layersMain);
+    console.log("✅ Semua script qgis2web berhasil dimuat");
   })
   .catch(err => {
-    console.error("Loader error:", err);
+    console.error("❌ Loader error:", err);
   });

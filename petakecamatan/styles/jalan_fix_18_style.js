@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_sawah_fix_4 = function(feature, resolution){
+var style_jalan_fix_18 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -16,12 +16,12 @@ var style_sawah_fix_4 = function(feature, resolution){
     var textAlign = "left";
     var offsetX = 0;
     var offsetY = 0;
-    var placement = 'point';
+    var placement = 'line';
     if ("" !== null) {
         labelText = String("");
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(80,131,0,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 0.988}),fill: new ol.style.Fill({color: 'rgba(129,181,82,1.0)'}),
+        stroke: new ol.style.Stroke({color: 'rgba(68,68,68,1.0)', lineDash: null, lineCap: 'square', lineJoin: 'bevel', width: 0.76}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)

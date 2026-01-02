@@ -1,18 +1,7 @@
 var wms_layers = [];
 
 
-        var lyr_GoogleSatelliteHybrid_0 = new ol.layer.Tile({
-            'title': 'Google Satellite Hybrid',
-            'opacity': 1.000000,
-            
-            
-            source: new ol.source.XYZ({
-            attributions: ' ',
-                url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
-            })
-        });
-
-        var lyr_GoogleMaps_1 = new ol.layer.Tile({
+        var lyr_GoogleMaps_0 = new ol.layer.Tile({
             'title': 'Google Maps',
             'opacity': 1.000000,
             
@@ -22,80 +11,91 @@ var wms_layers = [];
                 url: 'https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}'
             })
         });
-var format_batas_kecamatan_2 = new ol.format.GeoJSON();
-var features_batas_kecamatan_2 = format_batas_kecamatan_2.readFeatures(json_batas_kecamatan_2, 
+
+        var lyr_GoogleSatelliteHybrid_1 = new ol.layer.Tile({
+            'title': 'Google Satellite Hybrid',
+            'opacity': 1.000000,
+            
+            
+            source: new ol.source.XYZ({
+            attributions: ' ',
+                url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
+            })
+        });
+var format_perkebunan_fix_2 = new ol.format.GeoJSON();
+var features_perkebunan_fix_2 = format_perkebunan_fix_2.readFeatures(json_perkebunan_fix_2, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_batas_kecamatan_2 = new ol.source.Vector({
+var jsonSource_perkebunan_fix_2 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_batas_kecamatan_2.addFeatures(features_batas_kecamatan_2);
-var lyr_batas_kecamatan_2 = new ol.layer.Vector({
+jsonSource_perkebunan_fix_2.addFeatures(features_perkebunan_fix_2);
+var lyr_perkebunan_fix_2 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_batas_kecamatan_2, 
-                style: style_batas_kecamatan_2,
-                popuplayertitle: 'batas_kecamatan',
-                interactive: true,
-                title: '<img src="styles/legend/batas_kecamatan_2.png" /> batas_kecamatan'
-            });
-var format_perkebunan_fix_3 = new ol.format.GeoJSON();
-var features_perkebunan_fix_3 = format_perkebunan_fix_3.readFeatures(json_perkebunan_fix_3, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_perkebunan_fix_3 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_perkebunan_fix_3.addFeatures(features_perkebunan_fix_3);
-var lyr_perkebunan_fix_3 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_perkebunan_fix_3, 
-                style: style_perkebunan_fix_3,
+                source:jsonSource_perkebunan_fix_2, 
+                style: style_perkebunan_fix_2,
                 popuplayertitle: 'perkebunan_fix',
                 interactive: true,
-                title: '<img src="styles/legend/perkebunan_fix_3.png" /> perkebunan_fix'
+                title: '<img src="styles/legend/perkebunan_fix_2.png" /> perkebunan_fix'
             });
-var format_sawah_fix_4 = new ol.format.GeoJSON();
-var features_sawah_fix_4 = format_sawah_fix_4.readFeatures(json_sawah_fix_4, 
+var format_sawah_fix_3 = new ol.format.GeoJSON();
+var features_sawah_fix_3 = format_sawah_fix_3.readFeatures(json_sawah_fix_3, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_sawah_fix_4 = new ol.source.Vector({
+var jsonSource_sawah_fix_3 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_sawah_fix_4.addFeatures(features_sawah_fix_4);
-var lyr_sawah_fix_4 = new ol.layer.Vector({
+jsonSource_sawah_fix_3.addFeatures(features_sawah_fix_3);
+var lyr_sawah_fix_3 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_sawah_fix_4, 
-                style: style_sawah_fix_4,
+                source:jsonSource_sawah_fix_3, 
+                style: style_sawah_fix_3,
                 popuplayertitle: 'sawah_fix',
                 interactive: true,
-                title: '<img src="styles/legend/sawah_fix_4.png" /> sawah_fix'
+                title: '<img src="styles/legend/sawah_fix_3.png" /> sawah_fix'
             });
-var format_ladang_fix_5 = new ol.format.GeoJSON();
-var features_ladang_fix_5 = format_ladang_fix_5.readFeatures(json_ladang_fix_5, 
+var format_ladang_fix_4 = new ol.format.GeoJSON();
+var features_ladang_fix_4 = format_ladang_fix_4.readFeatures(json_ladang_fix_4, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_ladang_fix_5 = new ol.source.Vector({
+var jsonSource_ladang_fix_4 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_ladang_fix_5.addFeatures(features_ladang_fix_5);
-var lyr_ladang_fix_5 = new ol.layer.Vector({
+jsonSource_ladang_fix_4.addFeatures(features_ladang_fix_4);
+var lyr_ladang_fix_4 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_ladang_fix_5, 
-                style: style_ladang_fix_5,
+                source:jsonSource_ladang_fix_4, 
+                style: style_ladang_fix_4,
                 popuplayertitle: 'ladang_fix',
                 interactive: true,
-                title: '<img src="styles/legend/ladang_fix_5.png" /> ladang_fix'
+                title: '<img src="styles/legend/ladang_fix_4.png" /> ladang_fix'
             });
-var format_hutan_fix_6 = new ol.format.GeoJSON();
-var features_hutan_fix_6 = format_hutan_fix_6.readFeatures(json_hutan_fix_6, 
+var format_hutan_fix_5 = new ol.format.GeoJSON();
+var features_hutan_fix_5 = format_hutan_fix_5.readFeatures(json_hutan_fix_5, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_hutan_fix_6 = new ol.source.Vector({
+var jsonSource_hutan_fix_5 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_hutan_fix_6.addFeatures(features_hutan_fix_6);
-var lyr_hutan_fix_6 = new ol.layer.Vector({
+jsonSource_hutan_fix_5.addFeatures(features_hutan_fix_5);
+var lyr_hutan_fix_5 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_hutan_fix_6, 
-                style: style_hutan_fix_6,
+                source:jsonSource_hutan_fix_5, 
+                style: style_hutan_fix_5,
                 popuplayertitle: 'hutan_fix',
                 interactive: true,
-                title: '<img src="styles/legend/hutan_fix_6.png" /> hutan_fix'
+                title: '<img src="styles/legend/hutan_fix_5.png" /> hutan_fix'
+            });
+var format_batas_desa_6 = new ol.format.GeoJSON();
+var features_batas_desa_6 = format_batas_desa_6.readFeatures(json_batas_desa_6, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_batas_desa_6 = new ol.source.Vector({
+    attributions: ' ',
+});
+jsonSource_batas_desa_6.addFeatures(features_batas_desa_6);
+var lyr_batas_desa_6 = new ol.layer.Vector({
+                declutter: false,
+                source:jsonSource_batas_desa_6, 
+                style: style_batas_desa_6,
+                popuplayertitle: 'batas_desa',
+                interactive: true,
+                title: '<img src="styles/legend/batas_desa_6.png" /> batas_desa'
             });
 var format_desa_parungkamal_7 = new ol.format.GeoJSON();
 var features_desa_parungkamal_7 = format_desa_parungkamal_7.readFeatures(json_desa_parungkamal_7, 
@@ -112,50 +112,50 @@ var lyr_desa_parungkamal_7 = new ol.layer.Vector({
                 interactive: true,
                 title: '<img src="styles/legend/desa_parungkamal_7.png" /> desa_parungkamal'
             });
-var format_desa_karanggayam_8 = new ol.format.GeoJSON();
-var features_desa_karanggayam_8 = format_desa_karanggayam_8.readFeatures(json_desa_karanggayam_8, 
+var format_desa_lumbir_8 = new ol.format.GeoJSON();
+var features_desa_lumbir_8 = format_desa_lumbir_8.readFeatures(json_desa_lumbir_8, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_desa_karanggayam_8 = new ol.source.Vector({
+var jsonSource_desa_lumbir_8 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_desa_karanggayam_8.addFeatures(features_desa_karanggayam_8);
-var lyr_desa_karanggayam_8 = new ol.layer.Vector({
+jsonSource_desa_lumbir_8.addFeatures(features_desa_lumbir_8);
+var lyr_desa_lumbir_8 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_karanggayam_8, 
-                style: style_desa_karanggayam_8,
-                popuplayertitle: 'desa_karanggayam',
-                interactive: true,
-                title: '<img src="styles/legend/desa_karanggayam_8.png" /> desa_karanggayam'
-            });
-var format_desa_lumbir_9 = new ol.format.GeoJSON();
-var features_desa_lumbir_9 = format_desa_lumbir_9.readFeatures(json_desa_lumbir_9, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_desa_lumbir_9 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_desa_lumbir_9.addFeatures(features_desa_lumbir_9);
-var lyr_desa_lumbir_9 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_desa_lumbir_9, 
-                style: style_desa_lumbir_9,
+                source:jsonSource_desa_lumbir_8, 
+                style: style_desa_lumbir_8,
                 popuplayertitle: 'desa_lumbir',
                 interactive: true,
-                title: '<img src="styles/legend/desa_lumbir_9.png" /> desa_lumbir'
+                title: '<img src="styles/legend/desa_lumbir_8.png" /> desa_lumbir'
             });
-var format_desa_kedunggede_10 = new ol.format.GeoJSON();
-var features_desa_kedunggede_10 = format_desa_kedunggede_10.readFeatures(json_desa_kedunggede_10, 
+var format_desa_kedunggede_9 = new ol.format.GeoJSON();
+var features_desa_kedunggede_9 = format_desa_kedunggede_9.readFeatures(json_desa_kedunggede_9, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_desa_kedunggede_10 = new ol.source.Vector({
+var jsonSource_desa_kedunggede_9 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_desa_kedunggede_10.addFeatures(features_desa_kedunggede_10);
-var lyr_desa_kedunggede_10 = new ol.layer.Vector({
+jsonSource_desa_kedunggede_9.addFeatures(features_desa_kedunggede_9);
+var lyr_desa_kedunggede_9 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_kedunggede_10, 
-                style: style_desa_kedunggede_10,
+                source:jsonSource_desa_kedunggede_9, 
+                style: style_desa_kedunggede_9,
                 popuplayertitle: 'desa_kedunggede',
                 interactive: true,
-                title: '<img src="styles/legend/desa_kedunggede_10.png" /> desa_kedunggede'
+                title: '<img src="styles/legend/desa_kedunggede_9.png" /> desa_kedunggede'
+            });
+var format_desa_karanggayam_10 = new ol.format.GeoJSON();
+var features_desa_karanggayam_10 = format_desa_karanggayam_10.readFeatures(json_desa_karanggayam_10, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_desa_karanggayam_10 = new ol.source.Vector({
+    attributions: ' ',
+});
+jsonSource_desa_karanggayam_10.addFeatures(features_desa_karanggayam_10);
+var lyr_desa_karanggayam_10 = new ol.layer.Vector({
+                declutter: false,
+                source:jsonSource_desa_karanggayam_10, 
+                style: style_desa_karanggayam_10,
+                popuplayertitle: 'desa_karanggayam',
+                interactive: true,
+                title: '<img src="styles/legend/desa_karanggayam_10.png" /> desa_karanggayam'
             });
 var format_desa_dermaji_11 = new ol.format.GeoJSON();
 var features_desa_dermaji_11 = format_desa_dermaji_11.readFeatures(json_desa_dermaji_11, 
@@ -256,56 +256,58 @@ var jsonSource_bangunan_17 = new ol.source.Vector({
 jsonSource_bangunan_17.addFeatures(features_bangunan_17);
 var lyr_bangunan_17 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_bangunan_17, 
+                source:jsonSource_bangunan_17,
+maxResolution:2.8004466152261966,
+ 
                 style: style_bangunan_17,
                 popuplayertitle: 'bangunan',
                 interactive: true,
                 title: '<img src="styles/legend/bangunan_17.png" /> bangunan'
             });
-var format_batas_desa_18 = new ol.format.GeoJSON();
-var features_batas_desa_18 = format_batas_desa_18.readFeatures(json_batas_desa_18, 
+var format_jalan_fix_18 = new ol.format.GeoJSON();
+var features_jalan_fix_18 = format_jalan_fix_18.readFeatures(json_jalan_fix_18, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_batas_desa_18 = new ol.source.Vector({
+var jsonSource_jalan_fix_18 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_batas_desa_18.addFeatures(features_batas_desa_18);
-var lyr_batas_desa_18 = new ol.layer.Vector({
+jsonSource_jalan_fix_18.addFeatures(features_jalan_fix_18);
+var lyr_jalan_fix_18 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_batas_desa_18, 
-                style: style_batas_desa_18,
-                popuplayertitle: 'batas_desa',
-                interactive: true,
-                title: '<img src="styles/legend/batas_desa_18.png" /> batas_desa'
-            });
-var format_jalan_fix_19 = new ol.format.GeoJSON();
-var features_jalan_fix_19 = format_jalan_fix_19.readFeatures(json_jalan_fix_19, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_jalan_fix_19 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_jalan_fix_19.addFeatures(features_jalan_fix_19);
-var lyr_jalan_fix_19 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_jalan_fix_19, 
-                style: style_jalan_fix_19,
+                source:jsonSource_jalan_fix_18, 
+                style: style_jalan_fix_18,
                 popuplayertitle: 'jalan_fix',
                 interactive: true,
-                title: '<img src="styles/legend/jalan_fix_19.png" /> jalan_fix'
+                title: '<img src="styles/legend/jalan_fix_18.png" /> jalan_fix'
             });
-var format_sungai_fix_20 = new ol.format.GeoJSON();
-var features_sungai_fix_20 = format_sungai_fix_20.readFeatures(json_sungai_fix_20, 
+var format_sungai_fix_19 = new ol.format.GeoJSON();
+var features_sungai_fix_19 = format_sungai_fix_19.readFeatures(json_sungai_fix_19, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_sungai_fix_20 = new ol.source.Vector({
+var jsonSource_sungai_fix_19 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_sungai_fix_20.addFeatures(features_sungai_fix_20);
-var lyr_sungai_fix_20 = new ol.layer.Vector({
+jsonSource_sungai_fix_19.addFeatures(features_sungai_fix_19);
+var lyr_sungai_fix_19 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_sungai_fix_20, 
-                style: style_sungai_fix_20,
+                source:jsonSource_sungai_fix_19, 
+                style: style_sungai_fix_19,
                 popuplayertitle: 'sungai_fix',
                 interactive: true,
-                title: '<img src="styles/legend/sungai_fix_20.png" /> sungai_fix'
+                title: '<img src="styles/legend/sungai_fix_19.png" /> sungai_fix'
+            });
+var format_batas_kecamatan_20 = new ol.format.GeoJSON();
+var features_batas_kecamatan_20 = format_batas_kecamatan_20.readFeatures(json_batas_kecamatan_20, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_batas_kecamatan_20 = new ol.source.Vector({
+    attributions: ' ',
+});
+jsonSource_batas_kecamatan_20.addFeatures(features_batas_kecamatan_20);
+var lyr_batas_kecamatan_20 = new ol.layer.Vector({
+                declutter: false,
+                source:jsonSource_batas_kecamatan_20, 
+                style: style_batas_kecamatan_20,
+                popuplayertitle: 'batas_kecamatan',
+                interactive: true,
+                title: '<img src="styles/legend/batas_kecamatan_20.png" /> batas_kecamatan'
             });
 var format_balai_desa_21 = new ol.format.GeoJSON();
 var features_balai_desa_21 = format_balai_desa_21.readFeatures(json_balai_desa_21, 
@@ -316,7 +318,9 @@ var jsonSource_balai_desa_21 = new ol.source.Vector({
 jsonSource_balai_desa_21.addFeatures(features_balai_desa_21);
 var lyr_balai_desa_21 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_balai_desa_21, 
+                source:jsonSource_balai_desa_21,
+maxResolution:14.00223307613098,
+ 
                 style: style_balai_desa_21,
                 popuplayertitle: 'balai_desa',
                 interactive: true,
@@ -331,7 +335,9 @@ var jsonSource_kantor_kecamatan_22 = new ol.source.Vector({
 jsonSource_kantor_kecamatan_22.addFeatures(features_kantor_kecamatan_22);
 var lyr_kantor_kecamatan_22 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_kantor_kecamatan_22, 
+                source:jsonSource_kantor_kecamatan_22,
+maxResolution:8.401339845678589,
+ 
                 style: style_kantor_kecamatan_22,
                 popuplayertitle: 'kantor_kecamatan',
                 interactive: true,
@@ -346,7 +352,9 @@ var jsonSource_pendidikan_23 = new ol.source.Vector({
 jsonSource_pendidikan_23.addFeatures(features_pendidikan_23);
 var lyr_pendidikan_23 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_pendidikan_23, 
+                source:jsonSource_pendidikan_23,
+maxResolution:7.00111653806549,
+ 
                 style: style_pendidikan_23,
                 popuplayertitle: 'pendidikan',
                 interactive: true,
@@ -361,7 +369,9 @@ var jsonSource_kesehatan_24 = new ol.source.Vector({
 jsonSource_kesehatan_24.addFeatures(features_kesehatan_24);
 var lyr_kesehatan_24 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_kesehatan_24, 
+                source:jsonSource_kesehatan_24,
+maxResolution:8.401339845678589,
+ 
                 style: style_kesehatan_24,
                 popuplayertitle: 'kesehatan',
                 interactive: true,
@@ -376,7 +386,9 @@ var jsonSource_wisata_25 = new ol.source.Vector({
 jsonSource_wisata_25.addFeatures(features_wisata_25);
 var lyr_wisata_25 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_wisata_25, 
+                source:jsonSource_wisata_25,
+maxResolution:7.00111653806549,
+ 
                 style: style_wisata_25,
                 popuplayertitle: 'wisata',
                 interactive: true,
@@ -391,7 +403,9 @@ var jsonSource_tempat_ibadah_26 = new ol.source.Vector({
 jsonSource_tempat_ibadah_26.addFeatures(features_tempat_ibadah_26);
 var lyr_tempat_ibadah_26 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_tempat_ibadah_26, 
+                source:jsonSource_tempat_ibadah_26,
+maxResolution:7.00111653806549,
+ 
                 style: style_tempat_ibadah_26,
                 popuplayertitle: 'tempat_ibadah',
                 interactive: true,
@@ -406,7 +420,9 @@ var jsonSource_Kuburan_27 = new ol.source.Vector({
 jsonSource_Kuburan_27.addFeatures(features_Kuburan_27);
 var lyr_Kuburan_27 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_Kuburan_27, 
+                source:jsonSource_Kuburan_27,
+maxResolution:7.00111653806549,
+ 
                 style: style_Kuburan_27,
                 popuplayertitle: 'Kuburan',
                 interactive: true,
@@ -421,7 +437,9 @@ var jsonSource_Lapangan_28 = new ol.source.Vector({
 jsonSource_Lapangan_28.addFeatures(features_Lapangan_28);
 var lyr_Lapangan_28 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_Lapangan_28, 
+                source:jsonSource_Lapangan_28,
+maxResolution:7.00111653806549,
+ 
                 style: style_Lapangan_28,
                 popuplayertitle: 'Lapangan',
                 interactive: true,
@@ -436,7 +454,9 @@ var jsonSource_Toko_29 = new ol.source.Vector({
 jsonSource_Toko_29.addFeatures(features_Toko_29);
 var lyr_Toko_29 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_Toko_29, 
+                source:jsonSource_Toko_29,
+maxResolution:7.00111653806549,
+ 
                 style: style_Toko_29,
                 popuplayertitle: 'Toko',
                 interactive: true,
@@ -451,7 +471,9 @@ var jsonSource_Tempatmakan_30 = new ol.source.Vector({
 jsonSource_Tempatmakan_30.addFeatures(features_Tempatmakan_30);
 var lyr_Tempatmakan_30 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_Tempatmakan_30, 
+                source:jsonSource_Tempatmakan_30,
+maxResolution:7.00111653806549,
+ 
                 style: style_Tempatmakan_30,
                 popuplayertitle: 'Tempat makan',
                 interactive: true,
@@ -466,7 +488,9 @@ var jsonSource_Rumah_saya_31 = new ol.source.Vector({
 jsonSource_Rumah_saya_31.addFeatures(features_Rumah_saya_31);
 var lyr_Rumah_saya_31 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_Rumah_saya_31, 
+                source:jsonSource_Rumah_saya_31,
+maxResolution:2.8004466152261966,
+ 
                 style: style_Rumah_saya_31,
                 popuplayertitle: 'Rumah_saya',
                 interactive: true,
@@ -476,32 +500,36 @@ var group_point = new ol.layer.Group({
                                 layers: [lyr_balai_desa_21,lyr_kantor_kecamatan_22,lyr_pendidikan_23,lyr_kesehatan_24,lyr_wisata_25,lyr_tempat_ibadah_26,lyr_Kuburan_27,lyr_Lapangan_28,lyr_Toko_29,lyr_Tempatmakan_30,lyr_Rumah_saya_31,],
                                 fold: 'open',
                                 title: 'point'});
+var group_Line = new ol.layer.Group({
+                                layers: [lyr_jalan_fix_18,lyr_sungai_fix_19,],
+                                fold: 'close',
+                                title: 'Line'});
 var group_polygon = new ol.layer.Group({
-                                layers: [lyr_perkebunan_fix_3,lyr_sawah_fix_4,lyr_ladang_fix_5,lyr_hutan_fix_6,lyr_desa_parungkamal_7,lyr_desa_karanggayam_8,lyr_desa_lumbir_9,lyr_desa_kedunggede_10,lyr_desa_dermaji_11,lyr_desa_cirahab_12,lyr_desa_cingebul_13,lyr_desa_cidora_14,lyr_desa_canduk_15,lyr_desa_besuki_16,lyr_bangunan_17,],
+                                layers: [lyr_perkebunan_fix_2,lyr_sawah_fix_3,lyr_ladang_fix_4,lyr_hutan_fix_5,lyr_batas_desa_6,],
                                 fold: 'open',
                                 title: 'polygon'});
 
-lyr_GoogleSatelliteHybrid_0.setVisible(true);lyr_GoogleMaps_1.setVisible(true);lyr_batas_kecamatan_2.setVisible(true);lyr_perkebunan_fix_3.setVisible(true);lyr_sawah_fix_4.setVisible(true);lyr_ladang_fix_5.setVisible(true);lyr_hutan_fix_6.setVisible(true);lyr_desa_parungkamal_7.setVisible(true);lyr_desa_karanggayam_8.setVisible(true);lyr_desa_lumbir_9.setVisible(true);lyr_desa_kedunggede_10.setVisible(true);lyr_desa_dermaji_11.setVisible(true);lyr_desa_cirahab_12.setVisible(true);lyr_desa_cingebul_13.setVisible(true);lyr_desa_cidora_14.setVisible(true);lyr_desa_canduk_15.setVisible(true);lyr_desa_besuki_16.setVisible(true);lyr_bangunan_17.setVisible(true);lyr_batas_desa_18.setVisible(true);lyr_jalan_fix_19.setVisible(true);lyr_sungai_fix_20.setVisible(true);lyr_balai_desa_21.setVisible(true);lyr_kantor_kecamatan_22.setVisible(true);lyr_pendidikan_23.setVisible(true);lyr_kesehatan_24.setVisible(true);lyr_wisata_25.setVisible(true);lyr_tempat_ibadah_26.setVisible(true);lyr_Kuburan_27.setVisible(true);lyr_Lapangan_28.setVisible(true);lyr_Toko_29.setVisible(true);lyr_Tempatmakan_30.setVisible(true);lyr_Rumah_saya_31.setVisible(true);
-var layersList = [lyr_GoogleSatelliteHybrid_0,lyr_GoogleMaps_1,lyr_batas_kecamatan_2,group_polygon,lyr_batas_desa_18,lyr_jalan_fix_19,lyr_sungai_fix_20,group_point];
-lyr_batas_kecamatan_2.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_perkebunan_fix_3.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'JNSKBNSMS': 'JNSKBNSMS', 'JNSKBNTHN': 'JNSKBNTHN', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_sawah_fix_4.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'JNSSWH': 'JNSSWH', 'TNMSWH': 'TNMSWH', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_ladang_fix_5.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'JNSSLK': 'JNSSLK', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_hutan_fix_6.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'TKTHLT': 'TKTHLT', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_GoogleMaps_0.setVisible(true);lyr_GoogleSatelliteHybrid_1.setVisible(true);lyr_perkebunan_fix_2.setVisible(true);lyr_sawah_fix_3.setVisible(true);lyr_ladang_fix_4.setVisible(true);lyr_hutan_fix_5.setVisible(true);lyr_batas_desa_6.setVisible(true);lyr_desa_parungkamal_7.setVisible(true);lyr_desa_lumbir_8.setVisible(true);lyr_desa_kedunggede_9.setVisible(true);lyr_desa_karanggayam_10.setVisible(true);lyr_desa_dermaji_11.setVisible(true);lyr_desa_cirahab_12.setVisible(true);lyr_desa_cingebul_13.setVisible(true);lyr_desa_cidora_14.setVisible(true);lyr_desa_canduk_15.setVisible(true);lyr_desa_besuki_16.setVisible(true);lyr_bangunan_17.setVisible(true);lyr_jalan_fix_18.setVisible(true);lyr_sungai_fix_19.setVisible(true);lyr_batas_kecamatan_20.setVisible(true);lyr_balai_desa_21.setVisible(true);lyr_kantor_kecamatan_22.setVisible(true);lyr_pendidikan_23.setVisible(true);lyr_kesehatan_24.setVisible(true);lyr_wisata_25.setVisible(true);lyr_tempat_ibadah_26.setVisible(true);lyr_Kuburan_27.setVisible(true);lyr_Lapangan_28.setVisible(true);lyr_Toko_29.setVisible(true);lyr_Tempatmakan_30.setVisible(true);lyr_Rumah_saya_31.setVisible(true);
+var layersList = [lyr_GoogleMaps_0,lyr_GoogleSatelliteHybrid_1,group_polygon,lyr_desa_parungkamal_7,lyr_desa_lumbir_8,lyr_desa_kedunggede_9,lyr_desa_karanggayam_10,lyr_desa_dermaji_11,lyr_desa_cirahab_12,lyr_desa_cingebul_13,lyr_desa_cidora_14,lyr_desa_canduk_15,lyr_desa_besuki_16,lyr_bangunan_17,group_Line,lyr_batas_kecamatan_20,group_point];
+lyr_perkebunan_fix_2.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'JNSKBNSMS': 'JNSKBNSMS', 'JNSKBNTHN': 'JNSKBNTHN', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_sawah_fix_3.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'JNSSWH': 'JNSSWH', 'TNMSWH': 'TNMSWH', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_ladang_fix_4.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'JNSSLK': 'JNSSLK', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_hutan_fix_5.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'TKTHLT': 'TKTHLT', 'LAYER': 'LAYER', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_batas_desa_6.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'WADMKC': 'WADMKC', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'luas': 'luas', });
 lyr_desa_parungkamal_7.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_desa_karanggayam_8.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_desa_lumbir_9.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_desa_kedunggede_10.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_desa_lumbir_8.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_desa_kedunggede_9.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
+lyr_desa_karanggayam_10.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_desa_dermaji_11.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_desa_cirahab_12.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_desa_cingebul_13.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_desa_cidora_14.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_desa_canduk_15.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_desa_besuki_16.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'WADMKC': 'WADMKC', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'luas': 'luas', });
+lyr_desa_besuki_16.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_bangunan_17.set('fieldAliases', {'osm_id': 'osm_id', 'osm_type': 'osm_type', 'addr_stree': 'addr_stree', 'roof_mater': 'roof_mater', 'access_roo': 'access_roo', 'building': 'building', 'building_m': 'building_m', 'addr_house': 'addr_house', 'name': 'name', });
-lyr_batas_desa_18.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
-lyr_jalan_fix_19.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'ARHRJL': 'ARHRJL', 'AUTRJL': 'AUTRJL', 'FGSRJL': 'FGSRJL', 'JARRJL': 'JARRJL', 'JPARJL': 'JPARJL', 'KLLRJL': 'KLLRJL', 'KONRJL': 'KONRJL', 'KPMSTR': 'KPMSTR', 'LKONOF': 'LKONOF', 'LKSBSP': 'LKSBSP', 'LKSRTA': 'LKSRTA', 'LLHRRT': 'LLHRRT', 'LOCRJL': 'LOCRJL', 'LBRBHJ': 'LBRBHJ', 'LBRJLN': 'LBRJLN', 'MATRJL': 'MATRJL', 'MEDRJL': 'MEDRJL', 'SPCRJL': 'SPCRJL', 'STARJL': 'STARJL', 'TOLRJL': 'TOLRJL', 'UTKRJL': 'UTKRJL', 'VLCPRT': 'VLCPRT', 'WLYRJL': 'WLYRJL', 'TGL_SK': 'TGL_SK', 'JLNLYG': 'JLNLYG', 'KLSRJL': 'KLSRJL', 'SHAPE_Leng': 'SHAPE_Leng', });
-lyr_sungai_fix_20.set('fieldAliases', {'fid': 'fid', 'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'ADATGL': 'ADATGL', 'DMAX': 'DMAX', 'FNGAIR': 'FNGAIR', 'JNSSNG': 'JNSSNG', 'KLSSNG': 'KLSSNG', 'LTKSGI': 'LTKSGI', 'NAMWS': 'NAMWS', 'STATUS': 'STATUS', 'UKRSGI': 'UKRSGI', 'WMAX': 'WMAX', 'DBTMXS': 'DBTMXS', 'NAMDAS': 'NAMDAS', 'SHAPE_Leng': 'SHAPE_Leng', });
+lyr_jalan_fix_18.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'ARHRJL': 'ARHRJL', 'AUTRJL': 'AUTRJL', 'FGSRJL': 'FGSRJL', 'JARRJL': 'JARRJL', 'JPARJL': 'JPARJL', 'KLLRJL': 'KLLRJL', 'KONRJL': 'KONRJL', 'KPMSTR': 'KPMSTR', 'LKONOF': 'LKONOF', 'LKSBSP': 'LKSBSP', 'LKSRTA': 'LKSRTA', 'LLHRRT': 'LLHRRT', 'LOCRJL': 'LOCRJL', 'LBRBHJ': 'LBRBHJ', 'LBRJLN': 'LBRJLN', 'MATRJL': 'MATRJL', 'MEDRJL': 'MEDRJL', 'SPCRJL': 'SPCRJL', 'STARJL': 'STARJL', 'TOLRJL': 'TOLRJL', 'UTKRJL': 'UTKRJL', 'VLCPRT': 'VLCPRT', 'WLYRJL': 'WLYRJL', 'TGL_SK': 'TGL_SK', 'JLNLYG': 'JLNLYG', 'KLSRJL': 'KLSRJL', 'SHAPE_Leng': 'SHAPE_Leng', });
+lyr_sungai_fix_19.set('fieldAliases', {'fid': 'fid', 'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'ADATGL': 'ADATGL', 'DMAX': 'DMAX', 'FNGAIR': 'FNGAIR', 'JNSSNG': 'JNSSNG', 'KLSSNG': 'KLSSNG', 'LTKSGI': 'LTKSGI', 'NAMWS': 'NAMWS', 'STATUS': 'STATUS', 'UKRSGI': 'UKRSGI', 'WMAX': 'WMAX', 'DBTMXS': 'DBTMXS', 'NAMDAS': 'NAMDAS', 'SHAPE_Leng': 'SHAPE_Leng', });
+lyr_batas_kecamatan_20.set('fieldAliases', {'NAMOBJ': 'NAMOBJ', 'FCODE': 'FCODE', 'REMARK': 'REMARK', 'METADATA': 'METADATA', 'SRS_ID': 'SRS_ID', 'KDBBPS': 'KDBBPS', 'KDCBPS': 'KDCBPS', 'KDCPUM': 'KDCPUM', 'KDEBPS': 'KDEBPS', 'KDEPUM': 'KDEPUM', 'KDPBPS': 'KDPBPS', 'KDPKAB': 'KDPKAB', 'KDPPUM': 'KDPPUM', 'LUASWH': 'LUASWH', 'TIPADM': 'TIPADM', 'WADMKC': 'WADMKC', 'WADMKD': 'WADMKD', 'WADMKK': 'WADMKK', 'WADMPR': 'WADMPR', 'WIADKC': 'WIADKC', 'WIADKK': 'WIADKK', 'WIADPR': 'WIADPR', 'WIADKD': 'WIADKD', 'UUPP': 'UUPP', 'luas': 'luas', 'SHAPE_Leng': 'SHAPE_Leng', 'SHAPE_Area': 'SHAPE_Area', });
 lyr_balai_desa_21.set('fieldAliases', {'id': 'id', 'nama': 'nama', });
 lyr_kantor_kecamatan_22.set('fieldAliases', {'id': 'id', 'nama': 'nama', });
 lyr_pendidikan_23.set('fieldAliases', {'id': 'id', 'nama': 'nama', 'desa': 'desa', });
@@ -513,25 +541,25 @@ lyr_Lapangan_28.set('fieldAliases', {'id': 'id', 'Nama': 'Nama', 'desa': 'desa',
 lyr_Toko_29.set('fieldAliases', {'id': 'id', 'Nama': 'Nama', 'Desa': 'Desa', });
 lyr_Tempatmakan_30.set('fieldAliases', {'id': 'id', 'Nama': 'Nama', 'Desa': 'Desa', });
 lyr_Rumah_saya_31.set('fieldAliases', {'id': 'id', 'Nama': 'Nama', 'Alamat': 'Alamat', });
-lyr_batas_kecamatan_2.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_perkebunan_fix_3.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'JNSKBNSMS': 'Range', 'JNSKBNTHN': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_sawah_fix_4.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'JNSSWH': 'Range', 'TNMSWH': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_ladang_fix_5.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'JNSSLK': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_hutan_fix_6.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'TKTHLT': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_perkebunan_fix_2.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'JNSKBNSMS': 'Range', 'JNSKBNTHN': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_sawah_fix_3.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'JNSSWH': 'Range', 'TNMSWH': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_ladang_fix_4.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'JNSSLK': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_hutan_fix_5.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'TKTHLT': 'Range', 'LAYER': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_batas_desa_6.set('fieldImages', {'NAMOBJ': 'TextEdit', 'WADMKC': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'luas': 'TextEdit', });
 lyr_desa_parungkamal_7.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_desa_karanggayam_8.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_desa_lumbir_9.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_desa_kedunggede_10.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_desa_lumbir_8.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_desa_kedunggede_9.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
+lyr_desa_karanggayam_10.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_desa_dermaji_11.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_desa_cirahab_12.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_desa_cingebul_13.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_desa_cidora_14.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_desa_canduk_15.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_desa_besuki_16.set('fieldImages', {'NAMOBJ': 'TextEdit', 'WADMKC': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'luas': 'TextEdit', });
+lyr_desa_besuki_16.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_bangunan_17.set('fieldImages', {'osm_id': 'TextEdit', 'osm_type': 'TextEdit', 'addr_stree': 'TextEdit', 'roof_mater': 'TextEdit', 'access_roo': 'TextEdit', 'building': 'TextEdit', 'building_m': 'TextEdit', 'addr_house': 'TextEdit', 'name': 'TextEdit', });
-lyr_batas_desa_18.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
-lyr_jalan_fix_19.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'ARHRJL': 'Range', 'AUTRJL': 'Range', 'FGSRJL': 'Range', 'JARRJL': 'Range', 'JPARJL': 'Range', 'KLLRJL': 'TextEdit', 'KONRJL': 'Range', 'KPMSTR': 'TextEdit', 'LKONOF': 'TextEdit', 'LKSBSP': 'TextEdit', 'LKSRTA': 'TextEdit', 'LLHRRT': 'TextEdit', 'LOCRJL': 'Range', 'LBRBHJ': 'TextEdit', 'LBRJLN': 'TextEdit', 'MATRJL': 'Range', 'MEDRJL': 'Range', 'SPCRJL': 'Range', 'STARJL': 'Range', 'TOLRJL': 'Range', 'UTKRJL': 'Range', 'VLCPRT': 'TextEdit', 'WLYRJL': 'Range', 'TGL_SK': 'TextEdit', 'JLNLYG': 'Range', 'KLSRJL': 'Range', 'SHAPE_Leng': 'TextEdit', });
-lyr_sungai_fix_20.set('fieldImages', {'fid': 'TextEdit', 'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'ADATGL': 'TextEdit', 'DMAX': 'TextEdit', 'FNGAIR': 'TextEdit', 'JNSSNG': 'TextEdit', 'KLSSNG': 'TextEdit', 'LTKSGI': 'TextEdit', 'NAMWS': 'TextEdit', 'STATUS': 'TextEdit', 'UKRSGI': 'TextEdit', 'WMAX': 'TextEdit', 'DBTMXS': 'TextEdit', 'NAMDAS': 'TextEdit', 'SHAPE_Leng': 'TextEdit', });
+lyr_jalan_fix_18.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'ARHRJL': 'Range', 'AUTRJL': 'Range', 'FGSRJL': 'Range', 'JARRJL': 'Range', 'JPARJL': 'Range', 'KLLRJL': 'TextEdit', 'KONRJL': 'Range', 'KPMSTR': 'TextEdit', 'LKONOF': 'TextEdit', 'LKSBSP': 'TextEdit', 'LKSRTA': 'TextEdit', 'LLHRRT': 'TextEdit', 'LOCRJL': 'Range', 'LBRBHJ': 'TextEdit', 'LBRJLN': 'TextEdit', 'MATRJL': 'Range', 'MEDRJL': 'Range', 'SPCRJL': 'Range', 'STARJL': 'Range', 'TOLRJL': 'Range', 'UTKRJL': 'Range', 'VLCPRT': 'TextEdit', 'WLYRJL': 'Range', 'TGL_SK': 'TextEdit', 'JLNLYG': 'Range', 'KLSRJL': 'Range', 'SHAPE_Leng': 'TextEdit', });
+lyr_sungai_fix_19.set('fieldImages', {'fid': 'TextEdit', 'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'ADATGL': 'TextEdit', 'DMAX': 'TextEdit', 'FNGAIR': 'TextEdit', 'JNSSNG': 'TextEdit', 'KLSSNG': 'TextEdit', 'LTKSGI': 'TextEdit', 'NAMWS': 'TextEdit', 'STATUS': 'TextEdit', 'UKRSGI': 'TextEdit', 'WMAX': 'TextEdit', 'DBTMXS': 'TextEdit', 'NAMDAS': 'TextEdit', 'SHAPE_Leng': 'TextEdit', });
+lyr_batas_kecamatan_20.set('fieldImages', {'NAMOBJ': 'TextEdit', 'FCODE': 'TextEdit', 'REMARK': 'TextEdit', 'METADATA': 'TextEdit', 'SRS_ID': 'TextEdit', 'KDBBPS': 'TextEdit', 'KDCBPS': 'TextEdit', 'KDCPUM': 'TextEdit', 'KDEBPS': 'TextEdit', 'KDEPUM': 'TextEdit', 'KDPBPS': 'TextEdit', 'KDPKAB': 'TextEdit', 'KDPPUM': 'TextEdit', 'LUASWH': 'TextEdit', 'TIPADM': 'Range', 'WADMKC': 'TextEdit', 'WADMKD': 'TextEdit', 'WADMKK': 'TextEdit', 'WADMPR': 'TextEdit', 'WIADKC': 'TextEdit', 'WIADKK': 'TextEdit', 'WIADPR': 'TextEdit', 'WIADKD': 'TextEdit', 'UUPP': 'TextEdit', 'luas': 'TextEdit', 'SHAPE_Leng': 'TextEdit', 'SHAPE_Area': 'TextEdit', });
 lyr_balai_desa_21.set('fieldImages', {'id': 'TextEdit', 'nama': 'TextEdit', });
 lyr_kantor_kecamatan_22.set('fieldImages', {'id': 'TextEdit', 'nama': 'TextEdit', });
 lyr_pendidikan_23.set('fieldImages', {'id': 'TextEdit', 'nama': 'TextEdit', 'desa': 'TextEdit', });
@@ -543,25 +571,25 @@ lyr_Lapangan_28.set('fieldImages', {'id': 'TextEdit', 'Nama': 'TextEdit', 'desa'
 lyr_Toko_29.set('fieldImages', {'id': 'TextEdit', 'Nama': 'TextEdit', 'Desa': 'TextEdit', });
 lyr_Tempatmakan_30.set('fieldImages', {'id': 'TextEdit', 'Nama': 'TextEdit', 'Desa': 'TextEdit', });
 lyr_Rumah_saya_31.set('fieldImages', {'id': 'TextEdit', 'Nama': 'TextEdit', 'Alamat': 'TextEdit', });
-lyr_batas_kecamatan_2.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_perkebunan_fix_3.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'JNSKBNSMS': 'no label', 'JNSKBNTHN': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_sawah_fix_4.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'JNSSWH': 'no label', 'TNMSWH': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_ladang_fix_5.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'JNSSLK': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_hutan_fix_6.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'TKTHLT': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_perkebunan_fix_2.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'JNSKBNSMS': 'no label', 'JNSKBNTHN': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_sawah_fix_3.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'JNSSWH': 'no label', 'TNMSWH': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_ladang_fix_4.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'JNSSLK': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_hutan_fix_5.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'TKTHLT': 'no label', 'LAYER': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_batas_desa_6.set('fieldLabels', {'NAMOBJ': 'no label', 'WADMKC': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'luas': 'no label', });
 lyr_desa_parungkamal_7.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_desa_karanggayam_8.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_desa_lumbir_9.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_desa_kedunggede_10.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_desa_lumbir_8.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_desa_kedunggede_9.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
+lyr_desa_karanggayam_10.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_desa_dermaji_11.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_desa_cirahab_12.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_desa_cingebul_13.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_desa_cidora_14.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_desa_canduk_15.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_desa_besuki_16.set('fieldLabels', {'NAMOBJ': 'header label - always visible', 'WADMKC': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'luas': 'no label', });
+lyr_desa_besuki_16.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_bangunan_17.set('fieldLabels', {'osm_id': 'no label', 'osm_type': 'no label', 'addr_stree': 'no label', 'roof_mater': 'no label', 'access_roo': 'no label', 'building': 'no label', 'building_m': 'no label', 'addr_house': 'no label', 'name': 'no label', });
-lyr_batas_desa_18.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
-lyr_jalan_fix_19.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'ARHRJL': 'no label', 'AUTRJL': 'no label', 'FGSRJL': 'no label', 'JARRJL': 'no label', 'JPARJL': 'no label', 'KLLRJL': 'no label', 'KONRJL': 'no label', 'KPMSTR': 'no label', 'LKONOF': 'no label', 'LKSBSP': 'no label', 'LKSRTA': 'no label', 'LLHRRT': 'no label', 'LOCRJL': 'no label', 'LBRBHJ': 'no label', 'LBRJLN': 'no label', 'MATRJL': 'no label', 'MEDRJL': 'no label', 'SPCRJL': 'no label', 'STARJL': 'no label', 'TOLRJL': 'no label', 'UTKRJL': 'no label', 'VLCPRT': 'no label', 'WLYRJL': 'no label', 'TGL_SK': 'no label', 'JLNLYG': 'no label', 'KLSRJL': 'no label', 'SHAPE_Leng': 'no label', });
-lyr_sungai_fix_20.set('fieldLabels', {'fid': 'no label', 'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'ADATGL': 'no label', 'DMAX': 'no label', 'FNGAIR': 'no label', 'JNSSNG': 'no label', 'KLSSNG': 'no label', 'LTKSGI': 'no label', 'NAMWS': 'no label', 'STATUS': 'no label', 'UKRSGI': 'no label', 'WMAX': 'no label', 'DBTMXS': 'no label', 'NAMDAS': 'no label', 'SHAPE_Leng': 'no label', });
+lyr_jalan_fix_18.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'ARHRJL': 'no label', 'AUTRJL': 'no label', 'FGSRJL': 'no label', 'JARRJL': 'no label', 'JPARJL': 'no label', 'KLLRJL': 'no label', 'KONRJL': 'no label', 'KPMSTR': 'no label', 'LKONOF': 'no label', 'LKSBSP': 'no label', 'LKSRTA': 'no label', 'LLHRRT': 'no label', 'LOCRJL': 'no label', 'LBRBHJ': 'no label', 'LBRJLN': 'no label', 'MATRJL': 'no label', 'MEDRJL': 'no label', 'SPCRJL': 'no label', 'STARJL': 'no label', 'TOLRJL': 'no label', 'UTKRJL': 'no label', 'VLCPRT': 'no label', 'WLYRJL': 'no label', 'TGL_SK': 'no label', 'JLNLYG': 'no label', 'KLSRJL': 'no label', 'SHAPE_Leng': 'no label', });
+lyr_sungai_fix_19.set('fieldLabels', {'fid': 'no label', 'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'ADATGL': 'no label', 'DMAX': 'no label', 'FNGAIR': 'no label', 'JNSSNG': 'no label', 'KLSSNG': 'no label', 'LTKSGI': 'no label', 'NAMWS': 'no label', 'STATUS': 'no label', 'UKRSGI': 'no label', 'WMAX': 'no label', 'DBTMXS': 'no label', 'NAMDAS': 'no label', 'SHAPE_Leng': 'no label', });
+lyr_batas_kecamatan_20.set('fieldLabels', {'NAMOBJ': 'no label', 'FCODE': 'no label', 'REMARK': 'no label', 'METADATA': 'no label', 'SRS_ID': 'no label', 'KDBBPS': 'no label', 'KDCBPS': 'no label', 'KDCPUM': 'no label', 'KDEBPS': 'no label', 'KDEPUM': 'no label', 'KDPBPS': 'no label', 'KDPKAB': 'no label', 'KDPPUM': 'no label', 'LUASWH': 'no label', 'TIPADM': 'no label', 'WADMKC': 'no label', 'WADMKD': 'no label', 'WADMKK': 'no label', 'WADMPR': 'no label', 'WIADKC': 'no label', 'WIADKK': 'no label', 'WIADPR': 'no label', 'WIADKD': 'no label', 'UUPP': 'no label', 'luas': 'no label', 'SHAPE_Leng': 'no label', 'SHAPE_Area': 'no label', });
 lyr_balai_desa_21.set('fieldLabels', {'id': 'no label', 'nama': 'no label', });
 lyr_kantor_kecamatan_22.set('fieldLabels', {'id': 'no label', 'nama': 'no label', });
 lyr_pendidikan_23.set('fieldLabels', {'id': 'no label', 'nama': 'no label', 'desa': 'no label', });

@@ -1,7 +1,7 @@
 var size = 0;
 var placement = 'point';
 
-var style_batas_kecamatan_2 = function(feature, resolution){
+var style_batas_desa_6 = function(feature, resolution){
     var context = {
         feature: feature,
         variables: {}
@@ -9,8 +9,8 @@ var style_batas_kecamatan_2 = function(feature, resolution){
     
     var labelText = ""; 
     var value = feature.get("");
-    var labelFont = "10px, sans-serif";
-    var labelFill = "#000000";
+    var labelFont = "13.0px \'Open Sans\', sans-serif";
+    var labelFill = "#323232";
     var bufferColor = "";
     var bufferWidth = 0;
     var textAlign = "left";
@@ -21,7 +21,7 @@ var style_batas_kecamatan_2 = function(feature, resolution){
         labelText = String("");
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(174,23,24,1.0)', lineDash: [2.128,4.256], lineCap: 'square', lineJoin: 'bevel', width: 2.128}),
+        stroke: new ol.style.Stroke({color: 'rgba(35,35,35,1.0)', lineDash: null, lineCap: 'square', lineJoin: 'bevel', width: 0.38}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
