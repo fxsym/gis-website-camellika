@@ -56,6 +56,11 @@
             gap: clamp(10px, 3vw, 30px);
             flex-wrap: wrap;
             justify-content: flex-end;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
         }
 
         .nav-link {
@@ -67,6 +72,9 @@
             padding: 5px 0;
             font-size: clamp(12px, 2vw, 16px);
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .nav-link:hover,
@@ -88,6 +96,56 @@
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 100%;
+        }
+
+        /* Dropdown Arrow */
+        .dropdown-arrow {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #f5576c;
+            padding-left: 25px;
         }
 
         .menu-toggle {
@@ -265,17 +323,6 @@
             color: #f5576c;
         }
 
-        /* Tablet Portrait & Landscape (768px - 1024px) */
-        @media (max-width: 1024px) {
-            .container {
-                padding: 40px 20px;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            }
-        }
-
         /* Mobile & Small Tablet (max-width: 768px) */
         @media (max-width: 768px) {
             .navbar {
@@ -292,11 +339,54 @@
                 padding: 20px;
                 box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
                 display: none;
-                gap: 15px;
+                gap: 0;
+                align-items: stretch;
             }
 
             .nav-menu.active {
                 display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 15px 10px;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
+                background: #f8f9fa;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .nav-item.active .dropdown-menu {
+                max-height: 300px;
+                padding: 5px 0;
+            }
+
+            .nav-item.active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-item {
+                padding: 12px 30px;
+                font-size: 13px;
+            }
+
+            .dropdown-item:hover {
+                padding-left: 35px;
             }
 
             .menu-toggle {
@@ -304,7 +394,7 @@
             }
 
             .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
+                transform: rotate(45deg) translate(6px, 6px);
             }
 
             .menu-toggle.active span:nth-child(2) {
@@ -312,12 +402,7 @@
             }
 
             .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
-            .nav-link {
-                padding: 10px;
-                text-align: center;
+                transform: rotate(-45deg) translate(6px, -6px);
             }
 
             .page-header {
@@ -372,41 +457,6 @@
                 padding: 20px;
             }
         }
-
-        /* Landscape Orientation for Mobile */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .page-header {
-                padding: 30px 20px;
-            }
-
-            .container {
-                padding: 30px 20px;
-            }
-
-            .footer {
-                margin-top: 40px;
-                padding: 30px 20px;
-            }
-
-            .two-column {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-        }
-
-        /* Large Desktop (min-width: 1440px) */
-        @media (min-width: 1440px) {
-            .page-header {
-                padding: 80px 20px;
-            }
-
-            .container {
-                padding: 60px 20px;
-            }
-
-            .footer {
-                margin-top: 80px;
-            }
-        }
     </style>
 </head>
 
@@ -421,10 +471,22 @@
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Beranda</a></li>
-                <li><a href="./petadesa/petadesa.html" class="nav-link">Peta Desa</a></li>
-                <li><a href="./petakecamatan/petakecamatan.html" class="nav-link">Peta Kecamatan</a></li>
-                <li><a href="tentang.html" class="nav-link active">Tentang</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link">Beranda</a></li>
+                <li class="nav-item" id="dropdownToggle">
+                    <a href="#" class="nav-link">
+                        Peta Desa
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="desakaranggayam/index.html" class="dropdown-item">🏘️ Desa Karanggayam</a>
+                        <a href="desacanduk/index.html" class="dropdown-item">🏘️ Desa Canduk</a>
+                        <a href="desacingebul/index.html" class="dropdown-item">🏘️ Desa Cingebul</a>
+                        <a href="desaparungkamal/index.html" class="dropdown-item">🏘️ Desa Parungkamal</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="./petakecamatan/petakecamatan.html" class="nav-link">Peta Kecamatan</a>
+                </li>
+                <li class="nav-item"><a href="tentang.html" class="nav-link active">Tentang</a></li>
             </ul>
         </div>
     </nav>
@@ -611,7 +673,8 @@
                 <div class="card-content">
                     <p><strong>Karanggayam Smart Map</strong> dikembangkan oleh <strong>Oca Meilika Wulandari</strong>,
                         seorang mahasiswi dari Universitas Amikom Purwokerto dengan Nomor Induk Mahasiswa
-                        <strong>23SA21A141</strong>.</p>
+                        <strong>23SA21A141</strong>.
+                    </p>
 
                     <p style="margin-top: 15px;">Sebagai salah satu warga Karanggayam (RT 02/RW 01), website ini
                         merupakan kontribusi nyata Oca bagi desanya. Ia berharap inisiatif digital ini dapat memberikan
@@ -652,25 +715,64 @@
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
+        const dropdownToggle = document.getElementById('dropdownToggle');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Mobile dropdown toggle - PERBAIKAN
+        if (dropdownToggle) {
+            // Hanya handle klik pada nav-link, bukan seluruh dropdownToggle
+            const dropdownNavLink = dropdownToggle.querySelector('.nav-link');
+
+            if (dropdownNavLink) {
+                dropdownNavLink.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdownToggle.classList.toggle('active');
+                    }
+                });
+            }
+        }
+
+        // Close menu when clicking on a dropdown item - TIDAK PERLU PREVENT DEFAULT
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Biarkan link bekerja normal, hanya tutup menu
+                if (menuToggle && navMenu && dropdownToggle) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    dropdownToggle.classList.remove('active');
+                }
+            });
         });
 
-        // Close menu when clicking on a link
+        // Close menu when clicking on non-dropdown nav links
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
+            if (!link.closest('#dropdownToggle')) {
+                link.addEventListener('click', () => {
+                    if (menuToggle && navMenu) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+            if (menuToggle && navMenu && dropdownToggle) {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    dropdownToggle.classList.remove('active');
+                }
             }
         });
 

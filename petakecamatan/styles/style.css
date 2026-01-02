@@ -1,4 +1,4 @@
-/* Peta Kecamatan - Responsive Design with Universal Hamburger */
+/* Style sama untuk peta desa dan peta kecamatan */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -24,7 +24,6 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%;
 }
 
 .nav-container {
@@ -82,23 +81,114 @@ body {
     width: 100%;
 }
 
-/* Hamburger Menu Button - Always Visible */
-.hamburger-menu {
+/* Navbar Item */
+.nav-item {
+    position: relative;
+}
+
+/* Dropdown Arrow */
+.dropdown-arrow {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+.nav-item:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    min-width: 200px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    z-index: 1001;
+}
+
+.nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 12px 20px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+    color: #f5576c;
+    padding-left: 25px;
+}
+
+/* Fixed Hamburger Button - Pojok Kanan Atas */
+.hamburger-menu-fixed {
+    position: fixed;
+    top: 85px;
+    right: 20px;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    padding: 8px;
+    padding: 10px;
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    border-radius: 8px;
+    border-radius: 12px;
     transition: all 0.3s ease;
     border: none;
     outline: none;
+    box-shadow: 0 4px 20px rgba(245, 87, 108, 0.3);
+    opacity: 1;
+    visibility: visible;
 }
 
-.hamburger-menu:hover {
+/* Hide hamburger when panel is open */
+.hamburger-menu-fixed.active {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.hamburger-menu-fixed:hover {
     transform: scale(1.05);
-    box-shadow: 0 3px 15px rgba(245, 87, 108, 0.3);
+    box-shadow: 0 6px 25px rgba(245, 87, 108, 0.4);
+}
+
+.hamburger-menu-fixed .hamburger-line {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Animasi line tetap ada untuk smooth transition */
+.hamburger-menu-fixed.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-menu-fixed.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu-fixed.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .hamburger-line {
@@ -107,18 +197,6 @@ body {
     background: white;
     border-radius: 3px;
     transition: all 0.3s ease;
-}
-
-.hamburger-menu.active .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(7px, 7px);
-}
-
-.hamburger-menu.active .hamburger-line:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.active .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 /* Loading Screen */
@@ -313,6 +391,7 @@ body {
 .panel-close:hover {
     transform: rotate(90deg) scale(1.1);
 }
+
 
 /* Search Box */
 .search-container {
@@ -713,6 +792,97 @@ body {
     .search-results {
         max-height: 250px;
     }
+
+    /* Tambahkan ini untuk dropdown mobile */
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        display: none;
+        gap: 0;
+        align-items: stretch;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 15px 10px;
+        justify-content: space-between;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        background: #f8f9fa;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+    }
+
+    .nav-item.active .dropdown-menu {
+        max-height: 300px;
+        padding: 5px 0;
+    }
+
+    .nav-item.active .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-item {
+        padding: 12px 30px;
+        font-size: 13px;
+    }
+
+    .dropdown-item:hover {
+        padding-left: 35px;
+    }
+
+    /* Menu toggle button */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #333;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
 }
 
 /* Toggle All Item */
@@ -987,5 +1157,27 @@ body {
     #map {
         height: 100vh !important;
         width: 100vw !important;
+    }
+}
+
+/* Responsive untuk hamburger fixed */
+@media (max-width: 768px) {
+    .hamburger-menu-fixed {
+        top: 90px;
+        right: 15px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 479px) {
+    .hamburger-menu-fixed {
+        top: 90px;
+        right: 12px;
+        padding: 7px;
+    }
+
+    .hamburger-menu-fixed .hamburger-line {
+        width: 22px;
+        height: 2.5px;
     }
 }

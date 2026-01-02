@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Informasi Geografis Desa Karanggayam</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: #ffffff;
             min-height: 100vh;
             color: #333;
         }
-        
+
         /* Navbar */
         .navbar {
             background: #ffffff;
@@ -29,7 +30,7 @@
             top: 0;
             z-index: 1000;
         }
-        
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -38,26 +39,31 @@
             align-items: center;
             padding: 0 20px;
         }
-        
+
         .logo {
             font-size: clamp(18px, 4vw, 24px);
             font-weight: 700;
             color: #333;
             white-space: nowrap;
         }
-        
+
         .logo span {
             color: #f5576c;
         }
-        
+
         .nav-menu {
             display: flex;
             list-style: none;
             gap: clamp(10px, 3vw, 30px);
             flex-wrap: wrap;
             justify-content: flex-end;
+            align-items: center;
         }
-        
+
+        .nav-item {
+            position: relative;
+        }
+
         .nav-link {
             text-decoration: none;
             color: #666;
@@ -67,12 +73,16 @@
             padding: 5px 0;
             font-size: clamp(12px, 2vw, 16px);
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
-        
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover,
+        .nav-link.active {
             color: #f5576c;
         }
-        
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -83,18 +93,69 @@
             background: #f5576c;
             transition: width 0.3s ease;
         }
-        
-        .nav-link:hover::after, .nav-link.active::after {
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
         }
-        
+
+        /* Dropdown Arrow */
+        .dropdown-arrow {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .dropdown-item:hover {
+            background: #f8f9fa;
+            color: #f5576c;
+            padding-left: 25px;
+        }
+
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
         }
-        
+
         .menu-toggle span {
             width: 25px;
             height: 3px;
@@ -102,7 +163,7 @@
             border-radius: 3px;
             transition: all 0.3s ease;
         }
-        
+
         /* Hero Section */
         .hero {
             max-width: 1200px;
@@ -113,7 +174,7 @@
             gap: 40px;
             align-items: center;
         }
-        
+
         .hero-content h1 {
             font-size: clamp(24px, 5vw, 48px);
             font-weight: 700;
@@ -121,18 +182,18 @@
             margin-bottom: 20px;
             line-height: 1.2;
         }
-        
+
         .hero-content h1 .highlight {
             color: #f5576c;
         }
-        
+
         .hero-content p {
             font-size: clamp(14px, 2.5vw, 18px);
             color: #666;
             margin-bottom: 30px;
             line-height: 1.8;
         }
-        
+
         .cta-button {
             display: inline-block;
             background: #f5576c;
@@ -145,13 +206,13 @@
             box-shadow: 0 5px 20px rgba(245, 87, 108, 0.3);
             font-size: clamp(14px, 2vw, 16px);
         }
-        
+
         .cta-button:hover {
             background: #e04558;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
         }
-        
+
         .hero-image {
             width: 100%;
             height: clamp(250px, 40vw, 450px);
@@ -163,20 +224,20 @@
             justify-content: center;
             background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
         }
-        
+
         .hero-image img {
             width: 80%;
             height: 80%;
             object-fit: contain;
         }
-        
+
         /* Features */
         .features {
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
         }
-        
+
         .section-title {
             text-align: center;
             font-size: clamp(28px, 5vw, 38px);
@@ -184,17 +245,17 @@
             color: #333;
             margin-bottom: 40px;
         }
-        
+
         .section-title .highlight {
             color: #f5576c;
         }
-        
+
         .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
         }
-        
+
         .feature-card {
             background: #ffffff;
             padding: 30px;
@@ -207,31 +268,31 @@
             display: block;
             border: 2px solid transparent;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 10px 40px rgba(245, 87, 108, 0.2);
             border-color: #f5576c;
         }
-        
+
         .feature-icon {
             font-size: clamp(40px, 8vw, 60px);
             margin-bottom: 20px;
         }
-        
+
         .feature-card h3 {
             color: #333;
             font-size: clamp(18px, 3vw, 24px);
             margin-bottom: 15px;
             font-weight: 600;
         }
-        
+
         .feature-card p {
             color: #666;
             line-height: 1.6;
             font-size: clamp(13px, 2vw, 15px);
         }
-        
+
         .feature-arrow {
             margin-top: 15px;
             color: #f5576c;
@@ -241,7 +302,7 @@
             gap: 5px;
             font-size: clamp(13px, 2vw, 15px);
         }
-        
+
         /* Footer */
         .footer {
             background: #f8f9fa;
@@ -250,43 +311,27 @@
             margin-top: 60px;
             border-top: 1px solid #e9ecef;
         }
-        
+
         .footer p {
             color: #666;
             margin-bottom: 5px;
             font-size: clamp(13px, 2vw, 15px);
         }
-        
+
         .footer strong {
             color: #333;
         }
-        
+
         .footer .pink-text {
             color: #f5576c;
         }
-        
-        /* Tablet Portrait & Landscape (768px - 1024px) */
-        @media (max-width: 1024px) {
-            .hero {
-                gap: 30px;
-                margin: 30px auto;
-            }
-            
-            .features {
-                margin: 50px auto;
-            }
-            
-            .feature-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-        }
-        
+
         /* Mobile & Small Tablet (max-width: 768px) */
         @media (max-width: 768px) {
             .navbar {
                 padding: 12px 0;
             }
-            
+
             .nav-menu {
                 position: absolute;
                 top: 100%;
@@ -297,139 +342,122 @@
                 padding: 20px;
                 box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
                 display: none;
-                gap: 15px;
+                gap: 0;
+                align-items: stretch;
             }
-            
+
             .nav-menu.active {
                 display: flex;
             }
-            
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 15px 10px;
+                justify-content: space-between;
+                width: 100%;
+            }
+
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 0;
+                margin: 0;
+                background: #f8f9fa;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .nav-item.active .dropdown-menu {
+                max-height: 300px;
+                padding: 5px 0;
+            }
+
+            .nav-item.active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-item {
+                padding: 12px 30px;
+                font-size: 13px;
+            }
+
+            .dropdown-item:hover {
+                padding-left: 35px;
+            }
+
             .menu-toggle {
                 display: flex;
             }
-            
+
             .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
+                transform: rotate(45deg) translate(6px, 6px);
             }
-            
+
             .menu-toggle.active span:nth-child(2) {
                 opacity: 0;
             }
-            
+
             .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
+                transform: rotate(-45deg) translate(6px, -6px);
             }
-            
-            .nav-link {
-                padding: 10px;
-                text-align: center;
-            }
-            
+
             .hero {
                 grid-template-columns: 1fr;
                 gap: 30px;
                 margin: 20px auto;
             }
-            
+
             .hero-content {
                 text-align: center;
             }
-            
+
             .hero-image {
                 height: 300px;
             }
-            
+
             .features {
                 margin: 40px auto;
             }
-            
+
             .feature-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .footer {
-                margin-top: 40px;
-            }
         }
-        
+
         /* Small Mobile (max-width: 480px) */
         @media (max-width: 480px) {
             .nav-container {
                 padding: 0 15px;
             }
-            
+
             .hero {
                 padding: 0 15px;
                 margin: 15px auto;
             }
-            
+
             .hero-image {
                 height: 250px;
             }
-            
+
             .features {
                 padding: 0 15px;
                 margin: 30px auto;
             }
-            
+
             .feature-card {
                 padding: 25px;
-            }
-            
-            .section-title {
-                margin-bottom: 30px;
-            }
-        }
-        
-        /* Landscape Orientation for Mobile */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .hero {
-                grid-template-columns: 1fr 1fr;
-                gap: 20px;
-                margin: 20px auto;
-            }
-            
-            .hero-content {
-                text-align: left;
-            }
-            
-            .hero-content h1 {
-                margin-bottom: 15px;
-            }
-            
-            .hero-content p {
-                margin-bottom: 20px;
-            }
-            
-            .hero-image {
-                height: 250px;
-            }
-            
-            .features {
-                margin: 40px auto;
-            }
-            
-            .footer {
-                margin-top: 40px;
-            }
-        }
-        
-        /* Large Desktop (min-width: 1440px) */
-        @media (min-width: 1440px) {
-            .hero {
-                margin: 80px auto;
-            }
-            
-            .features {
-                margin: 100px auto;
-            }
-            
-            .footer {
-                margin-top: 100px;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar">
@@ -441,10 +469,21 @@
                 <span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link active">Beranda</a></li>
-                <li><a href="petadesa/petadesa.html" class="nav-link">Peta Desa</a></li>
-                <li><a href="petakecamatan/petakecamatan.html" class="nav-link">Peta Kecamatan</a></li>
-                <li><a href="tentang.html" class="nav-link">Tentang</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link active">Beranda</a></li>
+                <li class="nav-item" id="dropdownToggle">
+                    <a href="#" class="nav-link">
+                        Peta Desa
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="desakaranggayam/index.html" class="dropdown-item">🏘️ Desa Karanggayam</a>
+                        <a href="desacanduk/index.html" class="dropdown-item">🏘️ Desa Canduk</a>
+                        <a href="desacingebul/index.html" class="dropdown-item">🏘️ Desa Cingebul</a>
+                        <a href="desaparungkamal/index.html" class="dropdown-item">🏘️ Desa Parungkamal</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="petakecamatan/petakecamatan.html" class="nav-link">Peta Kecamatan</a></li>
+                <li class="nav-item"><a href="tentang.html" class="nav-link">Tentang</a></li>
             </ul>
         </div>
     </nav>
@@ -453,7 +492,8 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Sistem Informasi Geografis <span class="highlight">Desa Karanggayam</span> Kecamatan Lumbir</h1>
-            <p>Jelajahi peta interaktif wilayah Desa Karanggayam dan Kecamatan Lumbir dengan informasi geografis yang lengkap dan akurat.</p>
+            <p>Jelajahi peta interaktif wilayah Desa Karanggayam dan Kecamatan Lumbir dengan informasi geografis yang
+                lengkap dan akurat.</p>
             <a href="#features" class="cta-button">🗺️ Lihat Peta</a>
         </div>
         <div class="hero-image">
@@ -468,21 +508,24 @@
             <a href="./petadesa/petadesa.html" class="feature-card">
                 <div class="feature-icon">🏘️</div>
                 <h3>Desa Karanggayam</h3>
-                <p>Peta interaktif Desa Karanggayam dengan informasi lengkap fasilitas umum, jalan, sungai, dan batas wilayah desa.</p>
+                <p>Peta interaktif Desa Karanggayam dengan informasi lengkap fasilitas umum, jalan, sungai, dan batas
+                    wilayah desa.</p>
                 <div class="feature-arrow">Lihat Peta →</div>
             </a>
-            
+
             <a href="./petakecamatan/petakecamatan.html" class="feature-card">
                 <div class="feature-icon">🏛️</div>
                 <h3>Kecamatan Lumbir</h3>
-                <p>Peta wilayah Kecamatan Lumbir yang mencakup seluruh desa dengan visualisasi batas administrasi yang jelas.</p>
+                <p>Peta wilayah Kecamatan Lumbir yang mencakup seluruh desa dengan visualisasi batas administrasi yang
+                    jelas.</p>
                 <div class="feature-arrow">Lihat Peta →</div>
             </a>
-            
+
             <a href="tentang.html" class="feature-card">
                 <div class="feature-icon">ℹ️</div>
                 <h3>Informasi</h3>
-                <p>Informasi lengkap tentang sistem ini, sumber data, metodologi pembuatan peta, dan panduan penggunaan.</p>
+                <p>Informasi lengkap tentang sistem ini, sumber data, metodologi pembuatan peta, dan panduan penggunaan.
+                </p>
                 <div class="feature-arrow">Selengkapnya →</div>
             </a>
         </div>
@@ -499,25 +542,64 @@
         // Mobile Menu Toggle
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+        const dropdownToggle = document.getElementById('dropdownToggle');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Mobile dropdown toggle - PERBAIKAN
+        if (dropdownToggle) {
+            // Hanya handle klik pada nav-link, bukan seluruh dropdownToggle
+            const dropdownNavLink = dropdownToggle.querySelector('.nav-link');
+
+            if (dropdownNavLink) {
+                dropdownNavLink.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdownToggle.classList.toggle('active');
+                    }
+                });
+            }
+        }
+
+        // Close menu when clicking on a dropdown item - TIDAK PERLU PREVENT DEFAULT
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Biarkan link bekerja normal, hanya tutup menu
+                if (menuToggle && navMenu && dropdownToggle) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    dropdownToggle.classList.remove('active');
+                }
             });
         });
-        
+
+        // Close menu when clicking on non-dropdown nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (!link.closest('#dropdownToggle')) {
+                link.addEventListener('click', () => {
+                    if (menuToggle && navMenu) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+            if (menuToggle && navMenu && dropdownToggle) {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    dropdownToggle.classList.remove('active');
+                }
             }
         });
 
@@ -553,11 +635,12 @@
             document.querySelector('.hero-content').style.transition = 'all 0.8s ease';
             document.querySelector('.hero-content').style.opacity = '1';
             document.querySelector('.hero-content').style.transform = 'translateX(0)';
-            
+
             document.querySelector('.hero-image').style.transition = 'all 0.8s ease';
             document.querySelector('.hero-image').style.opacity = '1';
             document.querySelector('.hero-image').style.transform = 'translateX(0)';
         }, 100);
     </script>
 </body>
+
 </html>

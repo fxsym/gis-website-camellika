@@ -22,23 +22,40 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">🗺️ GIS Karanggayam</div>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Beranda</a></li>
-                <li><a href="../petadesa/petadesa.html" class="nav-link">Peta Desa</a></li>
-                <li><a href="petakecamatan.html" class="nav-link active">Peta Kecamatan</a></li>
-                <li><a href="../tentang.html" class="nav-link">Tentang</a></li>
 
-                <!-- Hamburger Menu - Always Visible -->
-                <li>
-                    <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle Layer Panel">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
+            <!-- ✅ BENAR - menu-toggle di luar ul, sejajar dengan logo dan nav-menu -->
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="../index.html" class="nav-link">Beranda</a></li>
+                <li class="nav-item" id="dropdownToggle">
+                    <a href="#" class="nav-link">
+                        Peta Desa
+                        <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="../desakaranggayam/index.html" class="dropdown-item">🏘️ Desa Karanggayam</a>
+                        <a href="../desacanduk/index.html" class="dropdown-item">🏘️ Desa Canduk</a>
+                        <a href="../desacingebul/index.html" class="dropdown-item">🏘️ Desa Cingebul</a>
+                        <a href="../desaparungkamal/index.html" class="dropdown-item">🏘️ Desa Parungkamal</a>
+                    </div>
                 </li>
+                <li class="nav-item"><a href="petakecamatan.html" class="nav-link active">Peta Kecamatan</a></li>
+                <li class="nav-item"><a href="../tentang.html" class="nav-link">Tentang</a></li>
             </ul>
         </div>
     </nav>
+
+    <!-- Fixed Hamburger Button -->
+    <button class="hamburger-menu-fixed" id="hamburgerMenu" aria-label="Toggle Layer Panel">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
 
     <!-- Loading Screen -->
     <div id="loading-screen">
@@ -892,6 +909,70 @@
         });
 
         console.log('✅ Enhanced Layer Search with Feature Zoom loaded!');
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const dropdownToggle = document.getElementById('dropdownToggle');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Mobile dropdown toggle - PERBAIKAN
+        if (dropdownToggle) {
+            // Hanya handle klik pada nav-link, bukan seluruh dropdownToggle
+            const dropdownNavLink = dropdownToggle.querySelector('.nav-link');
+
+            if (dropdownNavLink) {
+                dropdownNavLink.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdownToggle.classList.toggle('active');
+                    }
+                });
+            }
+        }
+
+        // Close menu when clicking on a dropdown item - TIDAK PERLU PREVENT DEFAULT
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Biarkan link bekerja normal, hanya tutup menu
+                if (menuToggle && navMenu && dropdownToggle) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    dropdownToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // Close menu when clicking on non-dropdown nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (!link.closest('#dropdownToggle')) {
+                link.addEventListener('click', () => {
+                    if (menuToggle && navMenu) {
+                        menuToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (menuToggle && navMenu && dropdownToggle) {
+                if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    dropdownToggle.classList.remove('active');
+                }
+            }
+        });
     </script>
 </body>
 
