@@ -896,7 +896,7 @@ jsonSource_Jalan_Kecamatan_54.addFeatures(features_Jalan_Kecamatan_54);
 var lyr_Jalan_Kecamatan_54 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_Jalan_Kecamatan_54,
-maxResolution:2.240357292180957,
+maxResolution:28.00446615226196,
  
                 style: style_Jalan_Kecamatan_54,
                 popuplayertitle: 'Jalan_Kecamatan',
@@ -913,7 +913,7 @@ jsonSource_Jalan_Desa_55.addFeatures(features_Jalan_Desa_55);
 var lyr_Jalan_Desa_55 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_Jalan_Desa_55,
-maxResolution:2.240357292180957,
+maxResolution:28.00446615226196,
  
                 style: style_Jalan_Desa_55,
                 popuplayertitle: 'Jalan_Desa',
@@ -930,7 +930,7 @@ jsonSource_Sungai_56.addFeatures(features_Sungai_56);
 var lyr_Sungai_56 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_Sungai_56,
-maxResolution:1.8202902998970274,
+maxResolution:28.00446615226196,
  
                 style: style_Sungai_56,
                 popuplayertitle: 'Sungai',

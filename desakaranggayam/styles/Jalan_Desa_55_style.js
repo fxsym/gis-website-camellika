@@ -21,7 +21,7 @@ var style_Jalan_Desa_55 = function(feature, resolution){
         labelText = String(feature.get("Nama_Jalan"));
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(78,79,69,0.9803921568627451)', lineDash: null, lineCap: 'square', lineJoin: 'bevel', width: 0.76}),
+        stroke: new ol.style.Stroke({color: 'rgba(126,124,120,1.0)', lineDash: null, lineCap: 'square', lineJoin: 'bevel', width: 0.76}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)

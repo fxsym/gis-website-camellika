@@ -21,7 +21,7 @@ var style_Sungai_56 = function(feature, resolution){
         labelText = String("");
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(50,180,217,1.0)', lineDash: null, lineCap: 'square', lineJoin: 'bevel', width: 1.5959999999999999}),
+        stroke: new ol.style.Stroke({color: 'rgba(50,180,217,1.0)', lineDash: null, lineCap: 'square', lineJoin: 'bevel', width: 0.76}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
