@@ -598,7 +598,7 @@ lyr_wisata_25.set('fieldLabels', {'id': 'no label', 'nama': 'no label', 'desa': 
 lyr_tempat_ibadah_26.set('fieldLabels', {'id': 'no label', 'nama': 'no label', 'desa': 'no label', });
 lyr_Kuburan_27.set('fieldLabels', {'id': 'no label', 'Nama': 'no label', 'Alamat': 'no label', 'desa': 'no label', });
 lyr_Lapangan_28.set('fieldLabels', {'id': 'no label', 'Nama': 'no label', 'desa': 'no label', });
-lyr_Toko_29.set('fieldLabels', {'id': 'no label', 'Nama': 'no label', 'Desa': 'no label', });
+lyr_Toko_29.set('fieldLabels', {'id': 'header label - visible with data', 'Nama': 'no label', 'Desa': 'no label', });
 lyr_Tempatmakan_30.set('fieldLabels', {'id': 'no label', 'Nama': 'no label', 'Desa': 'no label', });
 lyr_Rumah_saya_31.set('fieldLabels', {'id': 'no label', 'Nama': 'inline label - always visible', 'Alamat': 'no label', });
 lyr_Rumah_saya_31.on('precompose', function(evt) {
