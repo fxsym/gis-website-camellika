@@ -1,0 +1,1 @@
+var json_Balai_desa_50 = {"type":"FeatureCollection","name":"Balai_desa_50","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"10","Nama":"Balai Desa Karanggayam"},"geometry":{"type":"Point","coordinates":[108.99090554734515,-7.482781801955504]}}]}

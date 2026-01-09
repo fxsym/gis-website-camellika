@@ -1,0 +1,1 @@
+var json_SPBU_51 = {"type":"FeatureCollection","name":"SPBU_51","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"11","Nama":"SPBU Lumbir"},"geometry":{"type":"Point","coordinates":[108.996838633529151,-7.489271065756744]}}]}

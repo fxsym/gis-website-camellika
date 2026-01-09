@@ -9,8 +9,8 @@ var style_Tempat_Ibadah_41 = function(feature, resolution){
     
     var labelText = ""; 
     var value = feature.get("");
-    var labelFont = "13.0px \'Open Sans\', sans-serif";
-    var labelFill = "#323232";
+    var labelFont = "10.4px \'Open Sans\', sans-serif";
+    var labelFill = "#ffffff";
     var bufferColor = "";
     var bufferWidth = 0;
     var textAlign = "left";

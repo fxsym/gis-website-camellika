@@ -60,26 +60,27 @@ const layerScripts = [
   "layers/RT3_RW1_34.js",
   "layers/RT2_RW1_35.js",
   "layers/RT1_RW1_36.js",
-  "layers/Hutan_Kebun_Warga_37.js",
-  "layers/Building_38.js",
-  "layers/Perhutani_39.js",
-  "layers/Sawahh_40.js",
+  "layers/RT_Karanggayam_full_37.js",
+  "layers/Hutan_Kebun_Warga_38.js",
+  "layers/Building_39.js",
+  "layers/Perhutani_40.js",
   "layers/Tempat_Ibadah_41.js",
-  "layers/Fasilitas_Pendidikan_42.js",
-  "layers/Rumah_saya_43.js",
-  "layers/Clipped_44.js",
-  "layers/Lapangan_45.js",
-  "layers/Toko_46.js",
-  "layers/Bengkel_47.js",
-  "layers/Sawah_saya_48.js",
-  "layers/Balai_desa_49.js",
-  "layers/SPBU_50.js",
-  "layers/Rumah_Tokoh_Masyarakat_51.js",
-  "layers/Fasilitas_Kesehatan_52.js",
-  "layers/kuburandesa_53.js",
-  "layers/Jalan_Kecamatan_54.js",
-  "layers/Jalan_Desa_55.js",
-  "layers/Sungai_56.js"
+  "layers/sawahkebunhutanfull_42.js",
+  "layers/Fasilitas_Pendidikan_43.js",
+  "layers/Rumah_saya_44.js",
+  "layers/Rumahmakan_45.js",
+  "layers/Lapangan_46.js",
+  "layers/Toko_47.js",
+  "layers/Bengkel_48.js",
+  "layers/Sawah_saya_49.js",
+  "layers/Balai_desa_50.js",
+  "layers/SPBU_51.js",
+  "layers/Rumah_Tokoh_Masyarakat_52.js",
+  "layers/Fasilitas_Kesehatan_53.js",
+  "layers/kuburandesa_54.js",
+  "layers/Jalan_Kecamatan_55.js",
+  "layers/Jalan_Desa_56.js",
+  "layers/Sungai_57.js"
 ];
 
 /* ===============================
@@ -121,26 +122,27 @@ const styleScripts = [
   "styles/RT3_RW1_34_style.js",
   "styles/RT2_RW1_35_style.js",
   "styles/RT1_RW1_36_style.js",
-  "styles/Hutan_Kebun_Warga_37_style.js",
-  "styles/Building_38_style.js",
-  "styles/Perhutani_39_style.js",
-  "styles/Sawahh_40_style.js",
+  "styles/RT_Karanggayam_full_37_style.js",
+  "styles/Hutan_Kebun_Warga_38_style.js",
+  "styles/Building_39_style.js",
+  "styles/Perhutani_40_style.js",
   "styles/Tempat_Ibadah_41_style.js",
-  "styles/Fasilitas_Pendidikan_42_style.js",
-  "styles/Rumah_saya_43_style.js",
-  "styles/Clipped_44_style.js",
-  "styles/Lapangan_45_style.js",
-  "styles/Toko_46_style.js",
-  "styles/Bengkel_47_style.js",
-  "styles/Sawah_saya_48_style.js",
-  "styles/Balai_desa_49_style.js",
-  "styles/SPBU_50_style.js",
-  "styles/Rumah_Tokoh_Masyarakat_51_style.js",
-  "styles/Fasilitas_Kesehatan_52_style.js",
-  "styles/kuburandesa_53_style.js",
-  "styles/Jalan_Kecamatan_54_style.js",
-  "styles/Jalan_Desa_55_style.js",
-  "styles/Sungai_56_style.js"
+  "styles/sawahkebunhutanfull_42_style.js",
+  "styles/Fasilitas_Pendidikan_43_style.js",
+  "styles/Rumah_saya_44_style.js",
+  "styles/Rumahmakan_45_style.js",
+  "styles/Lapangan_46_style.js",
+  "styles/Toko_47_style.js",
+  "styles/Bengkel_48_style.js",
+  "styles/Sawah_saya_49_style.js",
+  "styles/Balai_desa_50_style.js",
+  "styles/SPBU_51_style.js",
+  "styles/Rumah_Tokoh_Masyarakat_52_style.js",
+  "styles/Fasilitas_Kesehatan_53_style.js",
+  "styles/kuburandesa_54_style.js",
+  "styles/Jalan_Kecamatan_55_style.js",
+  "styles/Jalan_Desa_56_style.js",
+  "styles/Sungai_57_style.js"
 ];
 
 /* ===============================
@@ -149,11 +151,7 @@ const styleScripts = [
 loadScriptsSequential(pluginScripts)
   .then(() => loadScriptsSequential(layerScripts))
   .then(() => loadScriptsSequential(styleScripts))
-  .then(() => loadScriptsSequential(["./layers/layers.js"]))
-  .then(() => loadScriptsSequential(["./resources/qgis2web.js"]))
-  .then(() => {
-    console.log("✅ Semua script peta berhasil dimuat");
-  })
-  .catch(err => {
-    console.error("❌ Loader error:", err);
-  });
+  .then(() => loadScriptsSequential(["layers/layers.js"]))
+  .then(() => loadScriptsSequential(["resources/qgis2web.js"]))
+  .then(() => console.log("✅ Semua script peta berhasil dimuat"))
+  .catch(err => console.error("❌ Loader error:", err));

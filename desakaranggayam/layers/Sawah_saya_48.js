@@ -1,1 +1,0 @@
-var json_Sawah_saya_48 = {"type":"FeatureCollection","name":"Sawah_saya_48","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"9","Nama":"Sawah Oca"},"geometry":{"type":"Point","coordinates":[108.990149358078881,-7.487950240128677]}}]}

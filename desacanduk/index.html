@@ -128,13 +128,19 @@
             <div class="layer-group">
                 <div class="layer-group-header" onclick="toggleGroup('admin')">
                     <span class="layer-group-title">
-                        🏛️ Batas Administratif
+                        🏛️ Administratif
                     </span>
                     <span class="layer-group-toggle" id="toggle-admin">▼</span>
                 </div>
                 <div class="layer-list" id="group-admin">
                     <div class="layer-item">
-                        <span class="layer-name">Batas Desa Canduk</span>
+                        <span class="layer-name">Full RW Desa Canduk</span>
+                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
+                        <span class="layer-name">Full Desa Canduk</span>
                         <div class="toggle-switch" onclick="toggleLayer(2, this)" data-layer="2">
                             <div class="toggle-slider"></div>
                         </div>
@@ -153,13 +159,13 @@
                 <div class="layer-list" id="group-infrastructure">
                     <div class="layer-item">
                         <span class="layer-name">Sungai</span>
-                        <div class="toggle-switch" onclick="toggleLayer(3, this)" data-layer="3">
+                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Jalan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
+                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
@@ -176,50 +182,20 @@
                 </div>
                 <div class="layer-list" id="group-buildings">
                     <div class="layer-item">
+                        <span class="layer-name">Bangunan</span>
+                        <div class="toggle-switch" onclick="toggleLayer(4, this)" data-layer="4">
+                            <div class="toggle-slider"></div>
+                        </div>
+                    </div>
+                    <div class="layer-item">
                         <span class="layer-name">Balai Desa</span>
-                        <div class="toggle-switch" onclick="toggleLayer(10, this)" data-layer="10">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Fasilitas Pendidikan</span>
                         <div class="toggle-switch" onclick="toggleLayer(8, this)" data-layer="8">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Fasilitas Kesehatan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(9, this)" data-layer="9">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>
                     <div class="layer-item">
                         <span class="layer-name">Tempat Ibadah</span>
                         <div class="toggle-switch" onclick="toggleLayer(7, this)" data-layer="7">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Komersial -->
-            <div class="layer-group">
-                <div class="layer-group-header" onclick="toggleGroup('commercial')">
-                    <span class="layer-group-title">
-                        🏪 Komersial
-                    </span>
-                    <span class="layer-group-toggle" id="toggle-commercial">▼</span>
-                </div>
-                <div class="layer-list" id="group-commercial">
-                    <div class="layer-item">
-                        <span class="layer-name">Toko</span>
-                        <div class="toggle-switch" onclick="toggleLayer(5, this)" data-layer="5">
-                            <div class="toggle-slider"></div>
-                        </div>
-                    </div>
-                    <div class="layer-item">
-                        <span class="layer-name">Tempat Makan</span>
-                        <div class="toggle-switch" onclick="toggleLayer(6, this)" data-layer="6">
                             <div class="toggle-slider"></div>
                         </div>
                     </div>

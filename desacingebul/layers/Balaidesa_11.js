@@ -1,0 +1,1 @@
+var json_Balaidesa_11 = {"type":"FeatureCollection","name":"Balaidesa_11","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","nama":"Balai Desa Cingebul"},"geometry":{"type":"Point","coordinates":[108.895866139861567,-7.455586017594517]}}]}

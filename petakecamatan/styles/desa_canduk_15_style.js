@@ -17,7 +17,7 @@ var style_desa_canduk_15 = function(feature, resolution){
     var offsetX = 0;
     var offsetY = 0;
     var placement = 'point';
-    if (feature.get("NAMOBJ") !== null) {
+    if (feature.get("NAMOBJ") !== null && resolution > 0 && resolution < 70) {
         labelText = String(feature.get("NAMOBJ"));
     }
     var style = [ new ol.style.Style({

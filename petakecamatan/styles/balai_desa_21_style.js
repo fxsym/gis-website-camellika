@@ -17,7 +17,7 @@ var style_balai_desa_21 = function(feature, resolution){
     var offsetX = 0;
     var offsetY = 0;
     var placement = 'point';
-    if (feature.get("nama") !== null && resolution > 0 && resolution < 14) {
+    if (feature.get("nama") !== null && resolution > 0 && resolution < 70) {
         labelText = String(feature.get("nama"));
     }
     var style = [ new ol.style.Style({

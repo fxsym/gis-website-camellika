@@ -1,1 +1,0 @@
-var json_kesehatan_parungkamal_11 = {"type":"FeatureCollection","name":"kesehatan_parungkamal_11","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"4","nama":"Klinik Dr. Slamet","desa":"Parungkamal"},"geometry":{"type":"Point","coordinates":[109.021539105114599,-7.507759967767792]}}]}

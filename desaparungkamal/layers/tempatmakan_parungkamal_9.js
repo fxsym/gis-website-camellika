@@ -1,0 +1,1 @@
+var json_tempatmakan_parungkamal_9 = {"type":"FeatureCollection","name":"tempatmakan_parungkamal_9","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[]}

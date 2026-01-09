@@ -106,7 +106,10 @@ var jsonSource_desa_parungkamal_7 = new ol.source.Vector({
 jsonSource_desa_parungkamal_7.addFeatures(features_desa_parungkamal_7);
 var lyr_desa_parungkamal_7 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_parungkamal_7, 
+                source:jsonSource_desa_parungkamal_7,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_parungkamal_7,
                 popuplayertitle: 'desa_parungkamal',
                 interactive: true,
@@ -121,7 +124,10 @@ var jsonSource_desa_lumbir_8 = new ol.source.Vector({
 jsonSource_desa_lumbir_8.addFeatures(features_desa_lumbir_8);
 var lyr_desa_lumbir_8 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_lumbir_8, 
+                source:jsonSource_desa_lumbir_8,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_lumbir_8,
                 popuplayertitle: 'desa_lumbir',
                 interactive: true,
@@ -136,7 +142,10 @@ var jsonSource_desa_kedunggede_9 = new ol.source.Vector({
 jsonSource_desa_kedunggede_9.addFeatures(features_desa_kedunggede_9);
 var lyr_desa_kedunggede_9 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_kedunggede_9, 
+                source:jsonSource_desa_kedunggede_9,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_kedunggede_9,
                 popuplayertitle: 'desa_kedunggede',
                 interactive: true,
@@ -151,7 +160,10 @@ var jsonSource_desa_karanggayam_10 = new ol.source.Vector({
 jsonSource_desa_karanggayam_10.addFeatures(features_desa_karanggayam_10);
 var lyr_desa_karanggayam_10 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_karanggayam_10, 
+                source:jsonSource_desa_karanggayam_10,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_karanggayam_10,
                 popuplayertitle: 'desa_karanggayam',
                 interactive: true,
@@ -166,7 +178,10 @@ var jsonSource_desa_dermaji_11 = new ol.source.Vector({
 jsonSource_desa_dermaji_11.addFeatures(features_desa_dermaji_11);
 var lyr_desa_dermaji_11 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_dermaji_11, 
+                source:jsonSource_desa_dermaji_11,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_dermaji_11,
                 popuplayertitle: 'desa_dermaji',
                 interactive: true,
@@ -181,7 +196,10 @@ var jsonSource_desa_cirahab_12 = new ol.source.Vector({
 jsonSource_desa_cirahab_12.addFeatures(features_desa_cirahab_12);
 var lyr_desa_cirahab_12 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_cirahab_12, 
+                source:jsonSource_desa_cirahab_12,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_cirahab_12,
                 popuplayertitle: 'desa_cirahab',
                 interactive: true,
@@ -196,7 +214,10 @@ var jsonSource_desa_cingebul_13 = new ol.source.Vector({
 jsonSource_desa_cingebul_13.addFeatures(features_desa_cingebul_13);
 var lyr_desa_cingebul_13 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_cingebul_13, 
+                source:jsonSource_desa_cingebul_13,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_cingebul_13,
                 popuplayertitle: 'desa_cingebul',
                 interactive: true,
@@ -211,7 +232,10 @@ var jsonSource_desa_cidora_14 = new ol.source.Vector({
 jsonSource_desa_cidora_14.addFeatures(features_desa_cidora_14);
 var lyr_desa_cidora_14 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_cidora_14, 
+                source:jsonSource_desa_cidora_14,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_cidora_14,
                 popuplayertitle: 'desa_cidora',
                 interactive: true,
@@ -226,7 +250,10 @@ var jsonSource_desa_canduk_15 = new ol.source.Vector({
 jsonSource_desa_canduk_15.addFeatures(features_desa_canduk_15);
 var lyr_desa_canduk_15 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_canduk_15, 
+                source:jsonSource_desa_canduk_15,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_canduk_15,
                 popuplayertitle: 'desa_canduk',
                 interactive: true,
@@ -241,7 +268,10 @@ var jsonSource_desa_besuki_16 = new ol.source.Vector({
 jsonSource_desa_besuki_16.addFeatures(features_desa_besuki_16);
 var lyr_desa_besuki_16 = new ol.layer.Vector({
                 declutter: false,
-                source:jsonSource_desa_besuki_16, 
+                source:jsonSource_desa_besuki_16,
+maxResolution:28004.466152261964,
+ minResolution:3.3605359382714357,
+
                 style: style_desa_besuki_16,
                 popuplayertitle: 'desa_besuki',
                 interactive: true,
@@ -257,7 +287,7 @@ jsonSource_bangunan_17.addFeatures(features_bangunan_17);
 var lyr_bangunan_17 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_bangunan_17,
-maxResolution:2.8004466152261966,
+maxResolution:3.3605359382714357,
  
                 style: style_bangunan_17,
                 popuplayertitle: 'bangunan',
@@ -319,7 +349,7 @@ jsonSource_balai_desa_21.addFeatures(features_balai_desa_21);
 var lyr_balai_desa_21 = new ol.layer.Vector({
                 declutter: false,
                 source:jsonSource_balai_desa_21,
-maxResolution:14.00223307613098,
+maxResolution:70.0111653806549,
  
                 style: style_balai_desa_21,
                 popuplayertitle: 'balai_desa',

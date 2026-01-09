@@ -1,0 +1,1 @@
+var json_Kesehatan_10 = {"type":"FeatureCollection","name":"Kesehatan_10","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"4","nama":"PKD Desa Cingebul","desa":"Cingebul"},"geometry":{"type":"Point","coordinates":[108.901718907521357,-7.454814276007261]}}]}

@@ -1,0 +1,1 @@
+var json_balai_desa_canduk_8 = {"type":"FeatureCollection","name":"balai_desa_canduk_8","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","nama":"Balai Desa Canduk"},"geometry":{"type":"Point","coordinates":[109.018898267454119,-7.487560036843979]}}]}
